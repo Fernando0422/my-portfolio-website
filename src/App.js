@@ -10,8 +10,7 @@ import Portfolio from './components/Portfolio';
 import Lamer from './components/work/lamer';
 import CAH from './components/work/CAH';
 import Snapchat from './components/work/Snapchat';
-import DorothysCalculator from './components/work/DorothysCalculator'; // Import DorothysCalculator component
-
+import DorothysCalculator from './components/work/DorothysCalculator';
 import './App.css';
 
 gsap.registerPlugin(ScrollTrigger);
@@ -37,8 +36,8 @@ const AnimatedRoutes = () => {
   };
 
   return (
-    <AnimatePresence 
-      mode="wait" 
+    <AnimatePresence
+      mode="wait"
       onExitComplete={() => {
         cleanupScrollTriggers();
       }}
