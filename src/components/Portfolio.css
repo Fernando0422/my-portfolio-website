@@ -1,0 +1,149 @@
+/* Portfolio Container Styling */
+.portfolio-page-container {
+    position: relative;
+    min-height: 100vh;
+    padding: 100px 40px 40px;
+    overflow: visible;
+    background-color: var(--primary-bg);
+    z-index: 1;
+}
+  
+/* Portfolio Banner Styling */
+.portfolio-page-banner {
+    width: 100%;
+    overflow: hidden;
+    white-space: nowrap;
+    font-size: 6rem;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 150px;
+    background-color: #FCFFF6;
+    position: relative;
+}
+  
+.portfolio-page-text {
+    display: inline-block;
+    white-space: nowrap;
+    will-change: transform;
+    color: #000000;
+    font-family: 'Michroma', sans-serif;
+    font-size: 4rem;
+    font-weight: 600;
+}
+
+/* Rectangles Section */
+.portfolio-page-rounded-rectangles {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin-top: 60px;
+}
+
+/* Rectangle Link: Ensures the entire rectangle is clickable */
+.portfolio-page-rectangle-link {
+    display: block;
+    width: 100%; /* Ensures the link stretches the entire rectangle */
+    height: 100%; /* Ensures the link stretches the entire rectangle */
+}
+
+.portfolio-page-rectangle {
+    position: relative;
+    width: 90%;
+    height: 500px;
+    background-color: #d1d1d1;
+    border-radius: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+    overflow: hidden;
+    transition: transform 0.3s ease-in-out;
+}
+
+.portfolio-page-rectangle-image {
+    width: 100%;
+    height: 100%;
+    object-fit: cover;
+    object-position: center; /* Ensure it centers the image */
+    transition: filter 0.3s ease-in-out;
+}
+
+/* Hover effect for rectangles */
+.portfolio-page-rectangle:hover .portfolio-page-rectangle-image {
+    filter: blur(5px);
+}
+
+.portfolio-page-rectangle::before {
+    content: "";
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background-color: rgba(0, 0, 0, 0); /* Initially transparent */
+    transition: background-color 0.3s ease-in-out;
+    z-index: 1;
+}
+
+/* Hover effect - slight dark overlay */
+.portfolio-page-rectangle:hover::before {
+    background-color: rgba(0, 0, 0, 0.4); /* Slight black shade on hover */
+}
+
+/* Company Name and Blurb Styling */
+.portfolio-page-company-name {
+    position: absolute;
+    top: 40px;
+    left: 30px;
+    color: white;
+    font-size: 0.7rem;
+    font-weight: 300;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+}
+
+.portfolio-page-rectangle:hover .portfolio-page-company-name {
+    opacity: 1;
+}
+
+.portfolio-page-blurb {
+    position: absolute;
+    bottom: 20px;
+    left: 20px;
+    color: white;
+    font-family: 'Mulish', sans-serif; /* Mulish font */
+    font-size: 2rem;
+    font-weight: 600; /* SemiBold weight */
+    z-index: 2;
+    opacity: 0;
+    transition: opacity 0.3s ease-in-out;
+    max-width: 280px;
+}
+
+.portfolio-page-rectangle:hover .portfolio-page-blurb {
+    opacity: 1;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 768px) {
+    .portfolio-page-container {
+        padding: 80px 20px 20px;
+    }
+
+    .portfolio-page-text {
+        font-size: 4rem;
+    }
+
+    .portfolio-page-rounded-rectangles {
+        flex-direction: column;
+    }
+
+    .portfolio-page-rectangle {
+        width: 100%;
+        margin-bottom: 30px;
+    }
+}

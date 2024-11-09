@@ -1,4 +1,3 @@
-// src/components/Navbar.js
 import React, { useState, useEffect } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { motion, AnimatePresence } from 'framer-motion';
@@ -12,18 +11,26 @@ function Navbar() {
     setIsOpen(!isOpen);
   };
 
+  // Effect to add fade-in effect for menu items when menu opens
   useEffect(() => {
     if (isOpen) {
       const items = document.querySelectorAll('.menu ul li');
       items.forEach((item, index) => {
         setTimeout(() => item.classList.add('fade-in'), index * 100);
       });
+    } else {
+      const items = document.querySelectorAll('.menu ul li');
+      items.forEach((item) => {
+        item.classList.remove('fade-in');
+      });
     }
   }, [isOpen]);
 
   return (
     <nav className={`navbar ${isOpen ? 'menu-open' : ''}`}>
-      <img src="/images/logo.png" alt="Logo" className="header-logo" />
+      <img src={`${process.env.PUBLIC_URL}/images/logo.png`} alt="Logo" className="header-logo" />
+      
+      {/* Menu icon for toggling */}
       <div className="menu-icon" onClick={toggleMenu}>
         <div className="menu-line"></div>
         <div className="menu-line"></div>
@@ -39,7 +46,10 @@ function Navbar() {
             exit={{ y: '-100%' }}
             transition={{ duration: 0.5 }}
           >
+            {/* Close icon */}
             <div className="close-icon" onClick={toggleMenu}>X</div>
+            
+            {/* Menu Links */}
             <ul>
               <li className={location.pathname === '/' ? 'active' : ''}>
                 <Link to="/" onClick={toggleMenu}>Home</Link>
@@ -50,8 +60,8 @@ function Navbar() {
               <li className={location.pathname === '/portfolio' ? 'active' : ''}>
                 <Link to="/portfolio" onClick={toggleMenu}>Portfolio</Link>
               </li>
-              <li className={location.pathname === '/contact' ? 'active' : ''}>
-                <Link to="/contact" onClick={toggleMenu}>Contact</Link>
+              <li>
+                <a href="mailto:Fernando.rojas0422@gmail.com" onClick={toggleMenu}>Connect</a>
               </li>
             </ul>
           </motion.div>

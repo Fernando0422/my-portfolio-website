@@ -4,7 +4,7 @@
   justify-content: space-between;
   align-items: center;
   padding: 0 20px;
-  background-color: #000; /* Restored black background */
+  background-color: #000; /* Black background */
   height: 80px;
   position: fixed;
   width: 100%;
@@ -31,7 +31,7 @@
 .menu-line {
   width: 100%;
   height: 3px;
-  background-color: white; /* Changed back to white for visibility on black navbar */
+  background-color: #FCFFF6;
   border-radius: 2px;
 }
 
@@ -48,7 +48,6 @@
   z-index: 1000;
 }
 
-/* Hide hamburger menu when menu is open */
 .menu-open .menu-icon {
   display: none;
 }
@@ -57,7 +56,7 @@
   position: fixed;
   top: 2rem;
   right: 2rem;
-  color: #fff;
+  color: #FCFFF6;
   font-size: 1.5rem;
   cursor: pointer;
   z-index: 1002;
@@ -87,19 +86,24 @@
 }
 
 .menu ul li a {
-  color: #fff;
-  text-decoration: none;
+  color: transparent;
   font-size: inherit;
   font-weight: bold;
-  transition: color 0.3s ease;
+  background: linear-gradient(to right, #FCFFF6 50%, #626262 50%);
+  background-clip: text;
+  -webkit-background-clip: text;
+  background-size: 200% 100%;
+  transition: background-position 0.5s ease-out;
+  background-position: right; /* Start with grey */
+  text-decoration: none;
 }
 
 .menu ul li a:hover {
-  color: #777;
+  background-position: left; /* Animate to white */
 }
 
 .menu ul li.active a {
-  color: #777;
+  background-position: left; /* Keep white on active link */
 }
 
 @keyframes fadeIn {

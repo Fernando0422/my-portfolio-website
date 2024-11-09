@@ -6,7 +6,7 @@
     "@testing-library/jest-dom": "^5.17.0",
     "@testing-library/react": "^13.4.0",
     "@testing-library/user-event": "^13.5.0",
-    "framer-motion": "^11.11.9",
+    "framer-motion": "^11.11.11",
     "gsap": "^3.12.5",
     "locomotive-scroll": "^4.1.4",
     "p5": "^1.11.0",
@@ -20,9 +20,12 @@
   "scripts": {
     "start": "react-scripts start",
     "build": "react-scripts build",
+    "predeploy": "npm run build",
+    "deploy": "gh-pages -d build",
     "test": "react-scripts test",
     "eject": "react-scripts eject"
   },
+  "homepage": "https://Fernando0422.github.io/portfolio-website",
   "eslintConfig": {
     "extends": [
       "react-app",
@@ -42,6 +45,7 @@
     ]
   },
   "devDependencies": {
-    "@babel/plugin-proposal-private-property-in-object": "^7.21.11"
+    "@babel/plugin-proposal-private-property-in-object": "^7.21.11",
+    "gh-pages": "^6.2.0"
   }
 }

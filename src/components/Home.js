@@ -15,15 +15,15 @@ function Home() {
             I'm Fernando Rojas,<br />
             a creative Frontend<br />
             developer.
-            <img 
-            src="/images/contact.png" 
-            alt="Contact Me" 
-            className="contact-icon"
-          />
-
+            <a href="mailto:Fernando.rojas0422@gmail.com">
+              <img 
+                src={`${process.env.PUBLIC_URL}/images/contact.png`} 
+                alt="Contact Me" 
+                className="contact-icon"
+              />
+            </a>
           </h1>
         </div>
-   
       </div>
     </div>
   );

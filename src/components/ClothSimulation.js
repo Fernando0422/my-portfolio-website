@@ -8,11 +8,11 @@ const ClothSimulation = () => {
   useEffect(() => {
     const sketch = (p) => {
       let cols, rows, cloth;
-      const spacing = 10;
-      const stiffness = .01;
+      const spacing = 25;
+      const stiffness = .21;
       const damping = .9;
-      const mouseInfluenceRadius = 20;
-      const mouseForceStrength = 12;
+      const mouseInfluenceRadius = 35;
+      const mouseForceStrength = 10;
       let prevMouseX, prevMouseY;
 
       class Particle {
@@ -142,7 +142,7 @@ const ClothSimulation = () => {
 
         display() {
           p.clear();
-          p.background(255);
+          p.background('#FCFFF6');
           for (const spring of this.springs) {
             spring.display();
           }

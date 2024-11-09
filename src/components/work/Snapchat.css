@@ -1,0 +1,142 @@
+/* Snapchat Container Styling */
+.snapchat-container {
+    background-color: var(--primary-bg);
+    color: var(--primary-text);
+    font-family: 'Mulish', sans-serif;
+    padding-bottom: 50px;
+  }
+  
+  /* Hero Section */
+  .snapchat-hero {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 50px;
+    padding: 160px 0;
+    background-color: #F8F16D; /* Yellow background color */
+  }
+  
+  .snapchat-hero-image {
+    width: auto;
+    height: 400px; /* Set a fixed height */
+    object-fit: contain;
+    object-position: center;
+  }
+  
+  
+  /* Description Section */
+  .snapchat-description-section {
+    display: flex;
+    justify-content: space-between;
+    align-items: flex-start;
+    padding: 0 50px;
+    margin-bottom: 50px;
+  }
+  
+  .snapchat-left {
+    max-width: 50%;
+    padding-left: 2rem;
+  }
+  
+  .snapchat-title {
+    font-size: 1rem;
+    font-weight: 600;
+    color: #000;
+    text-transform: uppercase;
+    letter-spacing: 2px;
+    margin-bottom: 10px;
+  }
+  
+  .snapchat-subtitle {
+    font-size: 2.5rem;
+    font-weight: 400;
+    color: rgb(0, 0, 0);
+    margin-bottom: 0;
+    line-height: 1.4;
+    max-width: 500px;
+  }
+  
+  .snapchat-right {
+    max-width: 45%;
+    margin-left: auto;
+    text-align: left;
+  }
+  
+  .snapchat-description {
+    font-size: 1.2rem;
+    line-height: 1.8;
+    color: rgb(0, 0, 0);
+    text-align: justify;
+    padding-left: 1rem;
+  }
+  
+  /* Images Section */
+  .snapchat-images {
+    display: flex;
+    justify-content: space-evenly;
+    gap: 40px;
+    padding: 0 50px;
+  }
+  
+  .snapchat-image,
+  .snapchat-video {
+    width: 45%;
+  }
+  
+  .snapchat-img {
+    width: 100%;
+    height: 400px;
+    object-fit: contain;
+    object-position: center;
+    border-radius: 20px;
+  }
+  
+  .snapchat-video-loop {
+    width: 100%;
+    height: 400px;
+    object-fit: cover;
+    border-radius: 20px;
+  }
+  
+  /* Media Queries for Responsiveness */
+  @media (max-width: 1024px) {
+    .snapchat-hero {
+      flex-direction: column;
+      padding: 0;
+    }
+  
+    .snapchat-left,
+    .snapchat-right {
+      max-width: 100%;
+    }
+  
+    .snapchat-description {
+      font-size: 1.1rem;
+    }
+  }
+  
+  @media (max-width: 768px) {
+    .snapchat-title {
+      font-size: 0.9rem;
+    }
+  
+    .snapchat-subtitle {
+      font-size: 1.8rem;
+    }
+  
+    .snapchat-description {
+      font-size: 1.1rem;
+    }
+  
+    .snapchat-images {
+      flex-direction: column;
+      padding: 0 20px;
+    }
+  
+    .snapchat-image,
+    .snapchat-video {
+      width: 100%;
+      margin-bottom: 20px;
+    }
+  }
+  

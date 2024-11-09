@@ -2,9 +2,10 @@
     position: relative;
     width: 100%;
     height: 100vh;
-    background-color: transparent;  /* Changed from #000000 */
+    background-color: #ffffff;  /* Set to white temporarily */
     overflow: hidden;
 }
+
 
 .cloth-background {
     position: fixed;
@@ -59,8 +60,8 @@
 }
 
 .contact-icon {
-    width: 120px;
-    height: 120px;
+    width: 100px;
+    height: 100px;
     cursor: pointer;
     transition: transform 0.3s ease;
 }

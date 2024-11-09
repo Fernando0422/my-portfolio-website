@@ -1,0 +1,334 @@
+/* Container and Banner Styles */
+.about-page-container {
+  position: relative;
+  min-height: 100vh;
+  padding: 100px 40px 40px;
+  overflow: visible;
+  background-color: var(--primary-bg);
+  z-index: 1;
+}
+
+.about-page-banner {
+  display: flex;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 20px 0;
+  margin-bottom: 40px;
+  width: 100%;
+  background-color: var(--primary-bg);
+  z-index: 100;
+  position: relative;
+}
+
+.about-page-text {
+  font-size: 5rem;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  font-family: 'Michroma', sans-serif;
+  text-transform: uppercase;
+  text-align: left;
+  z-index: 100;
+  position: relative;
+  mix-blend-mode: normal;
+}
+
+/* Content Layout */
+.content-layout {
+  display: flex;
+  justify-content: space-between;
+  margin-top: 40px;
+  flex-wrap: wrap;
+}
+
+.about-content {
+  max-width: 48%;
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: rgb(0, 0, 0);
+  font-family: Arial, sans-serif;
+  text-align: left;
+  margin-right: 20px;
+  padding: 10px;
+}
+
+.image-and-text {
+  max-width: 45%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+/* Profile Section */
+.photo-container {
+  display: flex;
+  justify-content: center;
+  margin-bottom: 20px;
+}
+
+.headshot {
+  width: 400px;
+  height: auto;
+  border-radius: 8px;
+  object-fit: cover;
+  position: relative;
+  bottom: 45px;
+}
+
+.additional-content {
+  font-size: 1.5rem;
+  line-height: 1.5;
+  color: rgb(0, 0, 0);
+  font-family: Arial, sans-serif;
+  text-align: left;
+  margin-top: 20px;
+  max-width: 100%;
+  position: relative;
+  bottom: 70px;
+}
+
+/* Awards Section */
+.awards-section {
+  margin: 100px 0;
+  padding: 0 20px;
+}
+
+.awards-title {
+  font-size: 3rem;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  font-family: 'Michroma', sans-serif;
+  margin-bottom: 60px;
+  text-transform: uppercase;
+}
+
+.awards-list {
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+}
+
+.award-item {
+  display: flex;
+  justify-content: space-between;
+  border-top: 1px solid rgb(0, 0, 0);
+  padding: 30px 0;
+  font-family: Arial, sans-serif;
+  font-size: 1.2rem;
+  text-transform: uppercase;
+}
+
+.award-year {
+  flex-basis: 15%;
+  color: rgb(0, 0, 0);
+}
+
+.award-title {
+  flex-basis: 40%;
+  font-weight: bold;
+  color: rgb(0, 0, 0);
+  padding: 0 20px;
+}
+
+.award-organization {
+  flex-basis: 45%;
+  text-align: right;
+  color: rgb(80, 80, 80);
+}
+
+/* Work Banner */
+.work-banner {
+  width: 100%;
+  overflow: hidden;
+  white-space: nowrap;
+  font-size: 6rem;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 150px;
+  background-color: #FCFFF6;
+  margin-top: 100px;
+  position: relative;
+}
+
+.work-text {
+  display: inline-block;
+  white-space: nowrap;
+  will-change: transform;
+  color: #000000;
+  font-family: 'Michroma', sans-serif;
+}
+
+/* Portfolio Style Rectangles Section */
+.portfolio-page-rounded-rectangles {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-top: 60px;
+  gap: 40px;
+  padding: 0 40px;
+}
+
+.portfolio-page-rectangle-link {
+  display: block;
+  width: 48%;
+  text-decoration: none;
+}
+
+.portfolio-page-rectangle {
+  position: relative;
+  width: 100%;
+  height: 500px;
+  background-color: #d1d1d1;
+  border-radius: 20px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+  overflow: hidden;
+  transition: transform 0.3s ease-in-out;
+}
+
+.portfolio-page-rectangle-image {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
+  transition: filter 0.3s ease-in-out;
+}
+
+.portfolio-page-rectangle:hover .portfolio-page-rectangle-image {
+  filter: blur(5px);
+}
+
+.portfolio-page-rectangle::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  background-color: rgba(0, 0, 0, 0);
+  transition: background-color 0.3s ease-in-out;
+  z-index: 1;
+}
+
+.portfolio-page-rectangle:hover::before {
+  background-color: rgba(0, 0, 0, 0.4);
+}
+
+.portfolio-page-company-name {
+  position: absolute;
+  top: 40px;
+  left: 30px;
+  color: white;
+  font-size: 0.7rem;
+  font-weight: 300;
+  text-transform: uppercase;
+  letter-spacing: 2px;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+}
+
+.portfolio-page-rectangle:hover .portfolio-page-company-name {
+  opacity: 1;
+}
+
+.portfolio-page-blurb {
+  position: absolute;
+  bottom: 20px;
+  left: 20px;
+  color: white;
+  font-family: 'Mulish', sans-serif;
+  font-size: 2rem;
+  font-weight: 600;
+  z-index: 2;
+  opacity: 0;
+  transition: opacity 0.3s ease-in-out;
+  max-width: 280px;
+}
+
+.portfolio-page-rectangle:hover .portfolio-page-blurb {
+  opacity: 1;
+}
+
+/* Media Queries for Responsiveness */
+@media (max-width: 1024px) {
+  .content-layout {
+    flex-direction: column;
+  }
+
+  .about-content,
+  .image-and-text {
+    max-width: 100%;
+    margin-right: 0;
+    margin-bottom: 40px;
+  }
+}
+
+@media (max-width: 768px) {
+  .about-page-container {
+    padding: 80px 20px 20px;
+  }
+
+  .about-page-text {
+    font-size: 3rem;
+  }
+
+  .headshot {
+    width: 100%;
+    max-width: 300px;
+  }
+
+  .award-item {
+    flex-direction: column;
+    gap: 10px;
+    padding: 20px 0;
+  }
+
+  .award-year,
+  .award-title,
+  .award-organization {
+    flex-basis: 100%;
+    text-align: left;
+    padding: 0;
+  }
+
+  .work-banner {
+    font-size: 4rem;
+    height: 100px;
+  }
+
+  .portfolio-page-rounded-rectangles {
+    flex-direction: column;
+    padding: 0 20px;
+    gap: 20px;
+  }
+
+  .portfolio-page-rectangle-link {
+    width: 100%;
+  }
+
+  .portfolio-page-rectangle {
+    height: 400px;
+  }
+
+  .portfolio-page-blurb {
+    font-size: 1.5rem;
+  }
+}
+
+@media (max-width: 480px) {
+  .about-page-text {
+    font-size: 2.5rem;
+  }
+
+  .about-content,
+  .additional-content {
+    font-size: 1.2rem;
+  }
+
+  .awards-title {
+    font-size: 2rem;
+  }
+}
