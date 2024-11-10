@@ -158,8 +158,8 @@
   font-family: 'Michroma', sans-serif;
 }
 
-/* Portfolio Style Rectangles Section */
-.portfolio-page-rounded-rectangles {
+/* Work Style Rectangles Section */
+.work-page-rounded-rectangles {
   display: flex;
   justify-content: space-between;
   align-items: center;
@@ -168,13 +168,13 @@
   padding: 0 40px;
 }
 
-.portfolio-page-rectangle-link {
+.work-page-rectangle-link {
   display: block;
   width: 48%;
   text-decoration: none;
 }
 
-.portfolio-page-rectangle {
+.work-page-rectangle {
   position: relative;
   width: 100%;
   height: 500px;
@@ -188,7 +188,7 @@
   transition: transform 0.3s ease-in-out;
 }
 
-.portfolio-page-rectangle-image {
+.work-page-rectangle-image {
   width: 100%;
   height: 100%;
   object-fit: cover;
@@ -196,11 +196,11 @@
   transition: filter 0.3s ease-in-out;
 }
 
-.portfolio-page-rectangle:hover .portfolio-page-rectangle-image {
+.work-page-rectangle:hover .work-page-rectangle-image {
   filter: blur(5px);
 }
 
-.portfolio-page-rectangle::before {
+.work-page-rectangle::before {
   content: "";
   position: absolute;
   top: 0;
@@ -212,11 +212,11 @@
   z-index: 1;
 }
 
-.portfolio-page-rectangle:hover::before {
+.work-page-rectangle:hover::before {
   background-color: rgba(0, 0, 0, 0.4);
 }
 
-.portfolio-page-company-name {
+.work-page-company-name {
   position: absolute;
   top: 40px;
   left: 30px;
@@ -230,11 +230,11 @@
   transition: opacity 0.3s ease-in-out;
 }
 
-.portfolio-page-rectangle:hover .portfolio-page-company-name {
+.work-page-rectangle:hover .work-page-company-name {
   opacity: 1;
 }
 
-.portfolio-page-blurb {
+.work-page-blurb {
   position: absolute;
   bottom: 20px;
   left: 20px;
@@ -248,7 +248,7 @@
   max-width: 280px;
 }
 
-.portfolio-page-rectangle:hover .portfolio-page-blurb {
+.work-page-rectangle:hover .work-page-blurb {
   opacity: 1;
 }
 
@@ -267,7 +267,20 @@
 }
 
 @media (max-width: 768px) {
-  .about-page-container {
+  .content-layout {
+    flex-direction: column-reverse; /* Place image first */
+  }
+
+  .photo-container {
+    margin-bottom: 3rem; /* Adjust margin to avoid extra space */
+    max-width: 400px;
+  }
+
+  .about-content {
+    margin-top: 0; /* Remove extra space above the text */
+    padding: 0; 
+  }
+ .about-page-container {
     padding: 80px 20px 20px;
   }
 
@@ -295,25 +308,35 @@
   }
 
   .work-banner {
-    font-size: 4rem;
-    height: 100px;
+    position: relative;
+    bottom: 14rem;
+    font-size: 2.8rem;
   }
 
-  .portfolio-page-rounded-rectangles {
+  .work-page-rounded-rectangles {
     flex-direction: column;
     padding: 0 20px;
     gap: 20px;
+    position: relative;
+    bottom: 24rem;
   }
-
-  .portfolio-page-rectangle-link {
+  
+  .work-page-rectangle-link {
     width: 100%;
   }
 
-  .portfolio-page-rectangle {
+  .work-page-rectangle {
     height: 400px;
   }
+  .work-page-rectangle-image {
+    width: 100%;
+    height: auto;
+    object-fit: contain;
+    object-position: center;
+    transition: filter 0.3s ease-in-out;
+  }
 
-  .portfolio-page-blurb {
+  .work-page-blurb {
     font-size: 1.5rem;
   }
 }
@@ -323,12 +346,66 @@
     font-size: 2.5rem;
   }
 
-  .about-content,
   .additional-content {
-    font-size: 1.2rem;
+    font-size: 1rem;
+  }
+
+  .awards-section {
+    margin: 50px 0 20px;
+    padding: 0 10px;
   }
 
   .awards-title {
-    font-size: 2rem;
+    font-size: 1.8rem;
+    text-align: left;
+    position: relative;
+    bottom: 9rem;
+  }
+
+  .awards-list {
+    position: relative;
+    bottom: 11rem;
+  }
+
+  .award-item {
+    display: flex;
+    flex-direction: column;
+    gap: 5px;
+    padding: 10px 0;
+  }
+
+  .award-year,
+  .award-title,
+  .award-organization {
+    flex-basis: 100%;
+    text-align: left;
+    padding: 0;
+    font-size: 1.2rem;
+  }
+
+  .photo-container {
+    margin-bottom: 2rem;
+  }
+
+  .about-content {
+    position: relative;
+    bottom: 5rem;
+    padding: 0;
+    font-size: 1rem;
+  }
+
+  .work-banner {
+    position: relative;
+    bottom: 17rem;
+    font-size: 2.5rem;
+  }
+
+  .work-page-rounded-rectangles {
+    margin-top: 90px;
+    padding: 0 20px;
+  }
+
+  .work-page-rectangle {
+    height: 300px;
   }
 }

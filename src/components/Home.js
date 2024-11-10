@@ -14,7 +14,7 @@ function Home() {
           <h1 className="intro-main-text">
             I'm Fernando Rojas,<br />
             a creative Frontend<br />
-            developer.
+            developer. <br></br>
             <a href="mailto:Fernando.rojas0422@gmail.com">
               <img 
                 src={`${process.env.PUBLIC_URL}/images/contact.png`} 

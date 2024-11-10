@@ -13,42 +13,27 @@ const About = () => {
   const locomotiveScrollRef = useRef(null);
 
   useEffect(() => {
-    let ctx = gsap.context(() => {});
-    let locomotiveScroll;
-    let scrollTimeout;
-
     const initScrollTrigger = () => {
       if (!scrollContainerRef.current) return;
 
-      ScrollTrigger.getAll().forEach(st => st.kill());
+      // Kill any existing ScrollTriggers to avoid duplicates
+      ScrollTrigger.getAll().forEach((st) => st.kill());
 
-      locomotiveScroll = new LocomotiveScroll({
+      locomotiveScrollRef.current = new LocomotiveScroll({
         el: scrollContainerRef.current,
         smooth: true,
         direction: "vertical",
-        lerp: 0.05,
-        multiplier: 0.7,
-        getSpeed: true,
-        getDirection: true,
-        inertia: 0.6,
       });
 
-      locomotiveScrollRef.current = locomotiveScroll;
-
-      if (locomotiveScrollRef.current) {
-        locomotiveScrollRef.current.on('scroll', () => {
-          ScrollTrigger.update();
-        });
-      }
+      locomotiveScrollRef.current.on("scroll", () => {
+        ScrollTrigger.update();
+      });
 
       ScrollTrigger.scrollerProxy(scrollContainerRef.current, {
         scrollTop(value) {
-          if (locomotiveScrollRef.current) {
-            return arguments.length
-              ? locomotiveScrollRef.current.scrollTo(value, 0, 0)
-              : locomotiveScrollRef.current.scroll.y;
-          }
-          return null;
+          return arguments.length
+            ? locomotiveScrollRef.current.scrollTo(value, 0, 0)
+            : locomotiveScrollRef.current.scroll.instance.scroll.y;
         },
         getBoundingClientRect() {
           return {
@@ -76,28 +61,25 @@ const About = () => {
       ScrollTrigger.refresh();
     };
 
-    scrollTimeout = setTimeout(initScrollTrigger, 500);
+    const handleResize = () => {
+      if (locomotiveScrollRef.current) {
+        locomotiveScrollRef.current.update();
+        ScrollTrigger.refresh();
+      } else {
+        initScrollTrigger();
+      }
+    };
+
+    initScrollTrigger();
+
+    window.addEventListener("resize", handleResize);
 
     return () => {
-      if (scrollTimeout) {
-        clearTimeout(scrollTimeout);
-      }
-
-      if (ctx) {
-        ctx.revert();
-      }
-
-      ScrollTrigger.getAll().forEach(st => st.kill());
-
+      window.removeEventListener("resize", handleResize);
+      ScrollTrigger.getAll().forEach((st) => st.kill());
       if (locomotiveScrollRef.current) {
         locomotiveScrollRef.current.destroy();
       }
-
-      locomotiveScrollRef.current = null;
-      locomotiveScroll = null;
-
-      ScrollTrigger.clearScrollMemory();
-      ScrollTrigger.refresh(true);
     };
   }, []);
 
@@ -106,7 +88,6 @@ const About = () => {
       <div className="about-page-banner">
         <span className="about-page-text">ABOUT FERNANDO</span>
       </div>
-
       <div className="content-layout">
         <div className="about-content">
           <p>
@@ -161,6 +142,16 @@ const About = () => {
             <span className="award-title">Stanford University - Computer Science</span>
             <span className="award-organization">Stanford Summer Session</span>
           </div>
+          <div className="award-item">
+            <span className="award-year">2022</span>
+            <span className="award-title">Full-stack Developer</span>
+            <span className="award-organization">Dorothy's Calculator (Recipient of T-Mobile Changemaker Challenge)</span>
+          </div>
+          <div className="award-item">
+            <span className="award-year">2022</span>
+            <span className="award-title">Snap Lens Academy</span>
+            <span className="award-organization">Snapchat Inc.</span>
+          </div>
         </div>
       </div>
 
@@ -170,54 +161,54 @@ const About = () => {
         </span>
       </div>
 
-      <div className="portfolio-page-rounded-rectangles">
-        <Link to="/lamer" className="portfolio-page-rectangle-link">
-          <div className="portfolio-page-rectangle">
+      <div className="work-page-rounded-rectangles">
+        <Link to="/lamer" className="work-page-rectangle-link">
+          <div className="work-page-rectangle">
             <img
               src={`${process.env.PUBLIC_URL}/images/lamer.png`}
               alt="La Mer"
-              className="portfolio-page-rectangle-image"
+              className="work-page-rectangle-image"
             />
-            <div className="portfolio-page-company-name">LA MER</div>
-            <div className="portfolio-page-blurb">Crafting luxury in the digital space.</div>
+            <div className="work-page-company-name">LA MER</div>
+            <div className="work-page-blurb">Crafting luxury in the digital space.</div>
           </div>
         </Link>
 
-        <Link to="/cah" className="portfolio-page-rectangle-link">
-          <div className="portfolio-page-rectangle">
+        <Link to="/cah" className="work-page-rectangle-link">
+          <div className="work-page-rectangle">
             <img
               src={`${process.env.PUBLIC_URL}/images/cah.png`}
               alt="CAH"
-              className="portfolio-page-rectangle-image"
+              className="work-page-rectangle-image"
             />
-            <div className="portfolio-page-company-name">CAH</div>
-            <div className="portfolio-page-blurb">Bridging art and digital innovation.</div>
+            <div className="work-page-company-name">CAH</div>
+            <div className="work-page-blurb">Bridging art and digital innovation.</div>
           </div>
         </Link>
       </div>
 
-      <div className="portfolio-page-rounded-rectangles">
-        <Link to="/snapchat" className="portfolio-page-rectangle-link">
-          <div className="portfolio-page-rectangle">
+      <div className="work-page-rounded-rectangles">
+        <Link to="/snapchat" className="work-page-rectangle-link">
+          <div className="work-page-rectangle">
             <img
               src={`${process.env.PUBLIC_URL}/images/snapchat.jpg`}
               alt="Snapchat"
-              className="portfolio-page-rectangle-image"
+              className="work-page-rectangle-image"
             />
-            <div className="portfolio-page-company-name">SNAPCHAT</div>
-            <div className="portfolio-page-blurb">Pioneering the future of AR experiences.</div>
+            <div className="work-page-company-name">SNAPCHAT</div>
+            <div className="work-page-blurb">Pioneering the future of AR experiences.</div>
           </div> 
         </Link>
 
-        <Link to="/dorothys-calculator" className="portfolio-page-rectangle-link">
-          <div className="portfolio-page-rectangle">
+        <Link to="/dorothys-calculator" className="work-page-rectangle-link">
+          <div className="work-page-rectangle">
             <img
               src={`${process.env.PUBLIC_URL}/images/Dorothys Calculator.png`}
               alt="Dorothy's Calculator"
-              className="portfolio-page-rectangle-image"
+              className="work-page-rectangle-image"
             />
-            <div className="portfolio-page-company-name">DOROTHY'S CALCULATOR</div>
-            <div className="portfolio-page-blurb">Empowering students through tech-driven tools.</div>
+            <div className="work-page-company-name">DOROTHY'S CALCULATOR</div>
+            <div className="work-page-blurb">Empowering students through tech-driven tools.</div>
           </div>
         </Link>
       </div>

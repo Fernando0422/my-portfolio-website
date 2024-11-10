@@ -9,16 +9,14 @@
 .cah-hero {
     display: flex;
     justify-content: center;
-    align-items: center; /* Center the image vertically */
     margin-bottom: 50px;
     padding-top: 30px;
 }
 
 .cah-hero-image {
     width: 100%;
-    height: 400px;
-    object-fit: contain; /* Ensure the full image is visible */
-    object-position: center; /* Center the image horizontally */
+    max-height: 400px;
+    object-fit: cover;
     border-radius: 20px;
 }
 
@@ -26,18 +24,17 @@
 .cah-description-section {
     display: flex;
     justify-content: space-between;
-    align-items: flex-start;
-    padding: 0 50px;
-    margin-bottom: 50px;
+    padding: 0 20px;
 }
 
 .cah-left {
-    max-width: 50%;
-    padding-left: 2rem; /* Adjust padding for better spacing */
+    text-align: left;
+    max-width: 600px;
+    order: 1; /* Places it on the left for desktop */
 }
 
 .cah-title {
-    font-size: 1rem;
+    font-size: 1.2rem;
     font-weight: 600;
     color: #000;
     text-transform: uppercase;
@@ -46,84 +43,111 @@
 }
 
 .cah-subtitle {
-    font-size: 2.5rem;
+    font-size: 2rem;
     font-weight: 400;
     color: rgb(0, 0, 0);
-    margin-bottom: 0;
+    margin-bottom: 20px;
     line-height: 1.4;
     max-width: 500px;
 }
 
+/* Description */
 .cah-right {
-    max-width: 45%; /* Adjust to ensure enough space between the columns */
-    margin-left: auto;
-    text-align: left; /* Keep the text aligned to the left for balance */
+    max-width: 700px;
+    margin-top: 20px;
+    text-align: justify;
+    order: 2; /* Places it on the right for desktop */
 }
 
 .cah-description {
-    font-size: 1.2rem;
+    font-size: 1rem;
     line-height: 1.8;
     color: rgb(0, 0, 0);
-    text-align: justify;
-    padding-left: 1rem; /* Adjust for proper spacing */
+    padding: 0 10px;
 }
 
 /* Image Section */
 .cah-images {
     display: flex;
-    justify-content: space-evenly;
-    gap: 40px;
-    padding: 0 50px;
+    justify-content: center;
+    gap: 10px;
+    padding: 0 20px;
+    margin-top: 30px;
 }
 
 .cah-image {
-    width: 45%;
+    width: 50%;
 }
 
 .cah-img {
     width: 100%;
     height: 400px;
-    object-fit: contain; /* Ensure the full image is visible */
-    object-position: center;
+    object-fit: cover;
     border-radius: 20px;
 }
 
 /* Media Queries for Responsiveness */
 @media (max-width: 1024px) {
     .cah-hero {
-        flex-direction: column;
         padding: 0;
     }
-
     .cah-left, .cah-right {
         max-width: 100%;
     }
-
     .cah-description {
         font-size: 1.1rem;
+    }
+    
+    /* Stack sections vertically on tablet view */
+    .cah-description-section {
+        flex-direction: column;
+        align-items: center;
     }
 }
 
 @media (max-width: 768px) {
-    .cah-title-small {
-        font-size: 0.9rem;
+    .cah-title {
+        font-size: 1rem;
     }
-
     .cah-subtitle {
         font-size: 1.8rem;
     }
-
     .cah-description {
-        font-size: 1.1rem;
+        font-size: 1rem;
     }
-
     .cah-images {
         flex-direction: column;
-        padding: 0 20px;
+        padding: 0 10px;
     }
-
     .cah-image {
         width: 100%;
         margin-bottom: 20px;
+    }
+    .cah-img {
+        height: 300px;
+    }
+    .cah-hero {
+        position: relative;
+        top: 4rem;
+    }
+}
+
+@media (max-width: 480px) {
+    .cah-title {
+        font-size: 0.8rem;
+        position: relative;
+        top: 1rem;
+    }
+    .cah-subtitle {
+        font-size: 1.6rem;
+        margin-bottom: 10px;
+        position: relative;
+        top: 1rem;
+    }
+    .cah-description {
+        font-size: 0.9rem;
+    }
+    .cah-img {
+        height: 250px;
     }
 }

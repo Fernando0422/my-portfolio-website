@@ -20,6 +20,8 @@
     height: 150px;
     background-color: #FCFFF6;
     position: relative;
+    z-index: 10; /* Ensure banner is on top */
+    margin-bottom: 60px; /* Adds spacing below banner */
 }
   
 .portfolio-page-text {
@@ -38,6 +40,8 @@
     justify-content: space-between;
     align-items: center;
     margin-top: 60px;
+    position: relative;
+    z-index: 1; /* Lower than the banner */
 }
 
 /* Rectangle Link: Ensures the entire rectangle is clickable */
@@ -135,15 +139,20 @@
     }
 
     .portfolio-page-text {
-        font-size: 4rem;
+        font-size: 2rem;
     }
 
     .portfolio-page-rounded-rectangles {
         flex-direction: column;
+        position: relative;
+        bottom: 4rem;
     }
 
     .portfolio-page-rectangle {
         width: 100%;
         margin-bottom: 30px;
+        
     }
+    
+
 }
