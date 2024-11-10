@@ -1,4 +1,3 @@
-Portfolio Website
 Welcome to my personal portfolio website! This site showcases my work, skills, and accomplishments in web development, highlighting projects I’ve worked on and the technologies I use.
 
 
