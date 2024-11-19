@@ -25,6 +25,12 @@ function Home() {
           </h1>
         </div>
       </div>
+      {/* Footer */}
+      <footer className="footer">
+        <p>
+          Made with ❤️ using React, Locomotive Scroll, GSAP, and p5.js
+        </p>
+      </footer>
     </div>
   );
 }

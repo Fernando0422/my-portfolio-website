@@ -160,3 +160,47 @@
       height: 250px;
   }
 }
+/* Key Projects & Skills Section */
+.snapchat-projects-skills-section {
+  display: flex;
+  justify-content: space-between;
+  padding: 0 20px;
+  margin: 30px 0;
+}
+
+.snapchat-projects-section,
+.snapchat-skills-section {
+  width: 48%;
+}
+
+.snapchat-projects-title,
+.snapchat-skills-title {
+  font-size: 1.5rem;
+  font-weight: bold;
+  margin-bottom: 10px;
+}
+
+.snapchat-projects-list,
+.snapchat-skills-description {
+  font-size: 1rem;
+  line-height: 1.6;
+}
+
+.snapchat-projects-list {
+  list-style: disc;
+  margin-left: 20px;
+}
+
+/* Responsive Layout Adjustments */
+@media (max-width: 768px) {
+  .snapchat-projects-skills-section {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .snapchat-projects-section,
+  .snapchat-skills-section {
+    width: 100%;
+    margin-bottom: 20px;
+  }
+}
