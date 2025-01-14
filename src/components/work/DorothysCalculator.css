@@ -181,15 +181,11 @@
   }
 
   .dorothys-calculator-hero-image {
-<<<<<<< HEAD
-    width: 100%; /* Full width for mobile */
-    max-height: 300px; /* Adjusted height for mobile */
-=======
     width: 100%;
-    max-height: 300px;
->>>>>>> b3339da (Updated DorothysCalculator component and styles)
+    max-height: 300px; /* Adjusted height for mobile */
   }
 }
+
 
 @media (max-width: 480px) {
   .dorothys-calculator-title {

@@ -8,7 +8,7 @@ const Lamer = () => {
       <section className="lamer-hero">
         <img
           src={`${process.env.PUBLIC_URL}/images/lamerlandingpage.png`}
-          alt="La Mer Hero"
+          alt="A luxury skincare landing page for La Me"
           className="lamer-hero-image"
         />
       </section>
@@ -82,14 +82,14 @@ const Lamer = () => {
         <div className="lamer-image">
           <img
             src={`${process.env.PUBLIC_URL}/images/lamerimage1.png`}
-            alt="La Mer Image 1"
+            alt="Close-up of La Mer product packaging"
             className="lamer-img"
           />
         </div>
         <div className="lamer-image">
           <img
             src={`${process.env.PUBLIC_URL}/images/lamerimage2.png`}
-            alt="La Mer Image 2"
+            alt="A promotional display of La Mer products"
             className="lamer-img"
           />
         </div>
