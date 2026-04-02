@@ -1,21 +1,27 @@
-import React from "react";
+import React, { useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./Home.css";
 import GradientBackdrop from "./backgrounds/GradientBackdrop";
 
 export default function Home() {
+  useEffect(() => {
+    document.documentElement.classList.add("home-page");
+    return () => document.documentElement.classList.remove("home-page");
+  }, []);
+
   return (
     <>
       <GradientBackdrop />
 
       <main className="home">
         <section className="olhaHero" aria-label="Hero">
-          <div className="olhaHero__titleRow">
+          <div className="olhaHero__titleBlock">
             <h1 className="olhaHero__title">VENTURE OPERATOR</h1>
-          <div className="olhaHero__location">
-            <span>BASED</span>
-            <span className="olhaHero__locationMiddle">IN</span>
-            <span>LOS ANGELES</span>
-          </div>
+            <div className="olhaHero__location">
+              <span>BASED</span>
+              <span className="olhaHero__locationMiddle">IN</span>
+              <span>LOS ANGELES</span>
+            </div>
           </div>
 
           <div className="olhaHero__workRow">
@@ -43,9 +49,9 @@ export default function Home() {
             </div>
           </div>
 
-          <a className="olhaHero__recentWork" href="/#/portfolio">
-            RECENT WORK <span aria-hidden="true">↓</span>
-          </a>
+          <Link className="olhaHero__workBtn" to="/portfolio">
+            VIEW WORK
+          </Link>
         </section>
       </main>
     </>

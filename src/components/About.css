@@ -38,6 +38,19 @@ html.about-page ::selection {
   color: var(--text-editorial, #0b0b0b);
 }
 
+/* Scroll readability: frosted “material” behind the About copy */
+html.about-page.about-scrolled .aboutPage__main {
+  background: rgba(252, 255, 246, 0.44);
+  border: 1px solid rgba(255, 255, 255, 0.55);
+  border-radius: 24px;
+  overflow: hidden;
+  box-shadow:
+    0 22px 70px rgba(0, 0, 0, 0.08),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85);
+  backdrop-filter: blur(48px) saturate(190%);
+  -webkit-backdrop-filter: blur(48px) saturate(190%);
+}
+
 .aboutPage.workPage {
   min-height: 100vh;
 }
@@ -577,9 +590,18 @@ html.about-page ::selection {
 
   .aboutPage__main {
     width: min(1120px, calc(100vw - 4px));
-    padding-left: 14px;
-    padding-right: 14px;
+    padding-left: max(14px, env(safe-area-inset-left, 0px));
+    padding-right: max(14px, env(safe-area-inset-right, 0px));
     padding-top: 0;
-    padding-bottom: 56px;
+    padding-bottom: max(56px, env(safe-area-inset-bottom, 0px));
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  html.about-page.about-scrolled .aboutPage__main {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(252, 255, 246, 0.92);
+    border-color: rgba(11, 11, 11, 0.14);
   }
 }

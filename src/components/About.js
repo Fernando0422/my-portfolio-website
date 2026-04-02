@@ -169,6 +169,24 @@ function About() {
     return () => document.documentElement.classList.remove("about-page");
   }, []);
 
+  useEffect(() => {
+    const el = document.documentElement;
+
+    const updateGlass = () => {
+      // After the hero intro region is passed, switch main copy onto glass for readability.
+      const next = window.scrollY > 260;
+      el.classList.toggle("about-scrolled", next);
+    };
+
+    updateGlass();
+    window.addEventListener("scroll", updateGlass, { passive: true });
+
+    return () => {
+      window.removeEventListener("scroll", updateGlass);
+      el.classList.remove("about-scrolled");
+    };
+  }, []);
+
   return (
     <section className="workPage aboutPage" aria-label="About Fernando Rojas">
       <VantaGlobeBackdrop />

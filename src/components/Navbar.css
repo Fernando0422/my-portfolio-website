@@ -1,15 +1,28 @@
+/* Apple-style “material” glass: strong blur + saturation + soft specular edge */
 .topbar {
+  --nav-glass-blur: 44px;
+  --nav-glass-sat: 1.85;
+  --nav-glass-bg: rgba(252, 255, 246, 0.48);
+  --nav-glass-bg-solid: rgba(252, 255, 246, 0.78);
+  --nav-glass-edge: rgba(255, 255, 255, 0.62);
+  --nav-glass-edge-soft: rgba(255, 255, 255, 0.35);
+
   position: fixed;
-  top: 26px;
+  top: max(26px, env(safe-area-inset-top, 0px));
   left: 50%;
   transform: translateX(-50%);
-  z-index: 120;
+  /* Above portaled mobile overlay (150) so the menu control stays tappable */
+  z-index: 210;
 
   display: flex;
   justify-content: center;
   align-items: center;
 
   pointer-events: none;
+  width: 100%;
+  max-width: calc(100vw - 12px);
+  padding: 0 env(safe-area-inset-right, 0) 0 env(safe-area-inset-left, 0);
+  box-sizing: border-box;
 }
 
 .topbar__shell {
@@ -18,46 +31,92 @@
   align-items: center;
   justify-content: center;
 
-  padding: 4px;
+  padding: 5px;
   border-radius: 999px;
 
-  /* always visible now */
-  background: rgba(255, 255, 255, 0.58);
-  border: 1px solid rgba(255, 255, 255, 0.62);
+  background: var(--nav-glass-bg);
+  border: 1px solid var(--nav-glass-edge-soft);
   box-shadow:
-    0 16px 36px rgba(0, 0, 0, 0.10),
-    0 1px 0 rgba(255, 255, 255, 0.88) inset,
-    0 0 0 1px rgba(0, 0, 0, 0.04);
+    0 0 0 0.5px rgba(0, 0, 0, 0.04),
+    0 8px 32px rgba(0, 0, 0, 0.07),
+    0 24px 64px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 var(--nav-glass-edge),
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.12);
 
-  backdrop-filter: blur(18px) saturate(1.08);
-  -webkit-backdrop-filter: blur(18px) saturate(1.08);
+  backdrop-filter: blur(var(--nav-glass-blur)) saturate(var(--nav-glass-sat));
+  -webkit-backdrop-filter: blur(var(--nav-glass-blur)) saturate(var(--nav-glass-sat));
 
   animation: navBreath 5.5s ease-in-out infinite;
 
   transition:
-    background 240ms ease,
-    border-color 240ms ease,
-    box-shadow 240ms ease,
-    backdrop-filter 240ms ease,
-    -webkit-backdrop-filter 240ms ease,
-    transform 240ms ease;
+    background 280ms ease,
+    border-color 280ms ease,
+    box-shadow 280ms ease,
+    backdrop-filter 280ms ease,
+    -webkit-backdrop-filter 280ms ease,
+    transform 280ms ease;
 }
 
-/* Solid fill once content scrolls under the bar — keeps bracket labels readable */
+/* Scrolled: more opaque “frosted” sheet, still glass (not flat fill) */
 .topbar--solid .topbar__shell {
-  background: #fcfff6;
-  border: 1px solid rgba(11, 11, 11, 0.12);
+  background: var(--nav-glass-bg-solid);
+  border: 1px solid rgba(255, 255, 255, 0.45);
   box-shadow:
-    0 10px 28px rgba(0, 0, 0, 0.08),
-    0 1px 0 rgba(255, 255, 255, 0.9) inset;
-  backdrop-filter: none;
-  -webkit-backdrop-filter: none;
+    0 0 0 0.5px rgba(0, 0, 0, 0.05),
+    0 6px 24px rgba(0, 0, 0, 0.06),
+    0 16px 48px rgba(0, 0, 0, 0.04),
+    inset 0 1px 0 rgba(255, 255, 255, 0.75),
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.08);
+  backdrop-filter: blur(32px) saturate(1.65);
+  -webkit-backdrop-filter: blur(32px) saturate(1.65);
   animation: none;
 }
 
 @media (prefers-reduced-motion: reduce) {
   .topbar__shell {
     animation: none;
+  }
+}
+
+@media (prefers-reduced-transparency: reduce) {
+  .topbar__shell,
+  .topbar--solid .topbar__shell,
+  .pillnav__active,
+  .topbar__mobileBackdrop,
+  .topbar__mobilePanel {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+  }
+
+  .topbar__shell {
+    background: rgba(252, 255, 246, 0.96);
+  }
+
+  .topbar--solid .topbar__shell {
+    background: #fcfff6;
+  }
+
+  .pillnav__active {
+    background: rgba(255, 255, 255, 0.92);
+  }
+
+  .topbar__mobilePanel {
+    background: rgba(252, 255, 246, 0.97);
+    border-color: rgba(11, 11, 11, 0.1);
+  }
+
+  .topbar__mobileBackdrop {
+    background: rgba(12, 14, 18, 0.35);
+  }
+
+  .topbar__shell--mobile {
+    backdrop-filter: none;
+    -webkit-backdrop-filter: none;
+    background: rgba(252, 255, 246, 0.96);
+  }
+
+  .topbar--solid .topbar__shell--mobile {
+    background: #fcfff6;
   }
 }
 
@@ -139,11 +198,19 @@
   border-radius: 999px;
   z-index: 1;
 
-  background: rgba(255, 255, 255, 0.90);
-  border: 1px solid rgba(0, 0, 0, 0.08);
+  background: rgba(255, 255, 255, 0.42);
+  border: 1px solid rgba(255, 255, 255, 0.55);
   box-shadow:
-    0 4px 10px rgba(0, 0, 0, 0.07),
-    0 1px 0 rgba(255, 255, 255, 0.94) inset;
+    0 2px 12px rgba(0, 0, 0, 0.05),
+    inset 0 1px 0 rgba(255, 255, 255, 0.85),
+    inset 0 0 0 0.5px rgba(255, 255, 255, 0.2);
+  backdrop-filter: blur(20px) saturate(1.5);
+  -webkit-backdrop-filter: blur(20px) saturate(1.5);
+}
+
+.topbar--solid .pillnav__active {
+  background: rgba(255, 255, 255, 0.55);
+  border-color: rgba(255, 255, 255, 0.5);
 }
 
 @keyframes navBreath {
@@ -167,26 +234,208 @@
   }
 }
 
+.topbar__shell--mobile {
+  display: none;
+}
+
 @media (max-width: 768px) {
   .topbar {
-    top: 14px;
+    top: max(14px, env(safe-area-inset-top, 0px));
+    justify-content: flex-end;
+    padding-left: max(12px, env(safe-area-inset-left, 0px));
+    padding-right: max(12px, env(safe-area-inset-right, 0px));
   }
 
-  .topbar__shell {
-    padding: 3px;
+  .topbar__shell--desktop {
+    display: none;
   }
 
-  .pillnav__list {
-    padding: 4px;
-    gap: 4px;
+  .topbar__shell--mobile {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    padding: 5px 6px;
+    border-radius: 999px;
+    max-width: 100%;
   }
 
-  .pillnav__link {
-    height: 31px;
-    padding: 0 11px;
+  .topbar--solid .topbar__shell--mobile {
+    background: var(--nav-glass-bg-solid);
+    border: 1px solid rgba(255, 255, 255, 0.45);
+    box-shadow:
+      0 0 0 0.5px rgba(0, 0, 0, 0.05),
+      0 6px 24px rgba(0, 0, 0, 0.06),
+      inset 0 1px 0 rgba(255, 255, 255, 0.75);
+    backdrop-filter: blur(32px) saturate(1.65);
+    -webkit-backdrop-filter: blur(32px) saturate(1.65);
   }
 
-  .pillnav__label {
-    font-size: 14px;
+  .topbar:not(.topbar--solid) .topbar__shell--mobile {
+    background: var(--nav-glass-bg);
+    border: 1px solid var(--nav-glass-edge-soft);
+    box-shadow:
+      0 0 0 0.5px rgba(0, 0, 0, 0.04),
+      0 8px 32px rgba(0, 0, 0, 0.07),
+      0 20px 56px rgba(0, 0, 0, 0.05),
+      inset 0 1px 0 var(--nav-glass-edge);
+    backdrop-filter: blur(var(--nav-glass-blur)) saturate(var(--nav-glass-sat));
+    -webkit-backdrop-filter: blur(var(--nav-glass-blur)) saturate(var(--nav-glass-sat));
   }
+
+  /* Home: clearer glass over Vanta fog so the pill reads “liquid” not solid white */
+  html.home-page .topbar:not(.topbar--solid) .topbar__shell--mobile {
+    background: rgba(255, 255, 255, 0.12);
+    border: 1px solid rgba(255, 255, 255, 0.5);
+    box-shadow:
+      0 0 0 0.5px rgba(255, 255, 255, 0.2) inset,
+      0 1px 0 rgba(255, 255, 255, 0.55) inset,
+      0 12px 40px rgba(0, 0, 0, 0.07),
+      0 4px 12px rgba(0, 0, 0, 0.04);
+    backdrop-filter: blur(48px) saturate(200%);
+    -webkit-backdrop-filter: blur(48px) saturate(200%);
+  }
+
+  html.home-page .topbar--solid .topbar__shell--mobile {
+    background: rgba(255, 255, 255, 0.22);
+    border: 1px solid rgba(255, 255, 255, 0.42);
+    box-shadow:
+      0 0 0 0.5px rgba(0, 0, 0, 0.05),
+      inset 0 1px 0 rgba(255, 255, 255, 0.65),
+      0 8px 28px rgba(0, 0, 0, 0.06);
+    backdrop-filter: blur(40px) saturate(185%);
+    -webkit-backdrop-filter: blur(40px) saturate(185%);
+  }
+}
+
+.topbar__menuBtn {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  width: 48px;
+  height: 48px;
+  padding: 0;
+  border: 0;
+  border-radius: 999px;
+  background: transparent;
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.topbar__menuBtnLines {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  gap: 6px;
+  width: 22px;
+  pointer-events: none;
+}
+
+.topbar__menuBtnLines span {
+  display: block;
+  height: 2px;
+  width: 100%;
+  border-radius: 1px;
+  background: rgba(12, 12, 12, 0.82);
+  transition:
+    transform 0.22s ease,
+    opacity 0.2s ease;
+}
+
+.topbar__menuBtn[aria-expanded="true"] .topbar__menuBtnLines span:nth-child(1) {
+  transform: translateY(8px) rotate(45deg);
+}
+
+.topbar__menuBtn[aria-expanded="true"] .topbar__menuBtnLines span:nth-child(2) {
+  opacity: 0;
+}
+
+.topbar__menuBtn[aria-expanded="true"] .topbar__menuBtnLines span:nth-child(3) {
+  transform: translateY(-8px) rotate(-45deg);
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .topbar__menuBtnLines span {
+    transition: none;
+  }
+}
+
+/* Portaled to document.body so backdrop-filter sees the real page (not trapped
+   inside .topbar’s transform, which breaks fixed + glass). */
+.topbar__mobileRoot {
+  position: fixed;
+  inset: 0;
+  z-index: 150;
+  pointer-events: auto;
+  isolation: isolate;
+}
+
+/* Full-screen frosted dim: mostly blur + very light tint (liquid-glass vibe) */
+.topbar__mobileBackdrop {
+  position: absolute;
+  inset: 0;
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background: rgba(255, 255, 255, 0.06);
+  cursor: pointer;
+  -webkit-tap-highlight-color: transparent;
+  backdrop-filter: blur(64px) saturate(200%);
+  -webkit-backdrop-filter: blur(64px) saturate(200%);
+}
+
+.topbar__mobilePanel {
+  position: relative;
+  z-index: 1;
+  margin-top: calc(72px + env(safe-area-inset-top, 0px));
+  margin-left: max(12px, env(safe-area-inset-left, 0px));
+  margin-right: max(12px, env(safe-area-inset-right, 0px));
+  padding: 16px 14px 18px;
+  border-radius: 22px;
+  background: rgba(255, 255, 255, 0.12);
+  border: 1px solid rgba(255, 255, 255, 0.48);
+  box-shadow:
+    0 0 0 0.5px rgba(255, 255, 255, 0.22) inset,
+    0 1px 0 rgba(255, 255, 255, 0.55) inset,
+    0 20px 60px rgba(0, 0, 0, 0.08),
+    0 8px 24px rgba(0, 0, 0, 0.04);
+  backdrop-filter: blur(48px) saturate(190%);
+  -webkit-backdrop-filter: blur(48px) saturate(190%);
+}
+
+.topbar__mobileList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 4px;
+}
+
+.topbar__mobileLink {
+  display: block;
+  padding: 16px 14px;
+  font-family: "JetBrains Mono", ui-monospace, SFMono-Regular, Menlo, Consolas,
+    "Liberation Mono", monospace;
+  font-size: 15px;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: rgba(12, 12, 12, 0.78);
+  border-radius: 14px;
+  transition: background 0.18s ease, color 0.18s ease;
+  -webkit-tap-highlight-color: transparent;
+}
+
+.topbar__mobileLink:hover {
+  color: rgba(10, 10, 10, 0.95);
+  background: rgba(255, 255, 255, 0.22);
+}
+
+.topbar__mobileLink.is-active {
+  color: rgba(10, 10, 10, 0.98);
+  background: rgba(255, 255, 255, 0.32);
+  box-shadow:
+    inset 0 1px 0 rgba(255, 255, 255, 0.55),
+    0 1px 2px rgba(0, 0, 0, 0.04);
 }

@@ -2,7 +2,8 @@ import React from "react";
 import { Link } from "react-router-dom";
 
 /**
- * Single project column on the Work grid: headline, expandable details, preview image.
+ * Single project column on the Work grid:
+ * headline, collapsed meta, expandable details (desktop only).
  */
 const WorkProjectCard = ({
   item,
@@ -11,8 +12,19 @@ const WorkProjectCard = ({
   setActiveIndex,
   defaultHoverIndex = null,
 }) => {
-  const isActive = activeIndex === idx;
-  const isDim = activeIndex !== null && activeIndex !== idx;
+  const isCoarse =
+    typeof window !== "undefined" &&
+    (window.matchMedia?.("(hover: none)").matches ||
+      window.matchMedia?.("(pointer: coarse)").matches);
+
+  // On touch devices we do NOT run the desktop expand/popup interaction.
+  const isActive = !isCoarse && activeIndex === idx;
+  const isDim = !isCoarse && activeIndex !== null && activeIndex !== idx;
+
+  const safeSetActiveIndex = (next) => {
+    if (isCoarse) return;
+    setActiveIndex(next);
+  };
 
   return (
     <Link
@@ -21,21 +33,23 @@ const WorkProjectCard = ({
         isDim ? " is-dim" : ""
       }`}
       role="listitem"
-      onMouseEnter={() => setActiveIndex(idx)}
-      onFocus={() => setActiveIndex(idx)}
-      onMouseLeave={() => setActiveIndex(defaultHoverIndex)}
-      onBlur={() => setActiveIndex(defaultHoverIndex)}
+      onMouseEnter={() => safeSetActiveIndex(idx)}
+      onFocus={() => safeSetActiveIndex(idx)}
+      onMouseLeave={() => safeSetActiveIndex(defaultHoverIndex)}
+      onBlur={() => safeSetActiveIndex(defaultHoverIndex)}
     >
       <div className="workPage__cardHead">
         <span className="workPage__number">{`00-${idx + 1}`}</span>
         <span className="workPage__cardTitle">{item.title}</span>
       </div>
+
       <span
         className="workPage__cardMeta workPage__cardMeta--collapsed"
         aria-hidden={isActive}
       >
         {item.subtitle}
       </span>
+
       <div className="workPage__details">
         <span
           className="workPage__cardMeta workPage__cardMeta--expanded"
@@ -43,7 +57,8 @@ const WorkProjectCard = ({
         >
           {item.subtitle}
         </span>
-          <div className="workPage__detailBody">
+
+        <div className="workPage__detailBody">
           <div className="workPage__detailList">
             {item.details.map((line) => (
               <span key={line} className="workPage__detailItem">
@@ -54,6 +69,7 @@ const WorkProjectCard = ({
               </span>
             ))}
           </div>
+
           <div
             className={`workPage__previewWrap workPage__previewWrap--${item.previewTreat}`}
           >
@@ -65,6 +81,7 @@ const WorkProjectCard = ({
             />
           </div>
         </div>
+
         <p className="workPage__blurb">{item.blurb}</p>
       </div>
     </Link>
@@ -72,3 +89,4 @@ const WorkProjectCard = ({
 };
 
 export default WorkProjectCard;
+

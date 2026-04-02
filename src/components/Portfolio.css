@@ -2,7 +2,7 @@
   position: relative;
   z-index: 0;
   min-height: 100vh;
-  padding: 98px 0 0;
+  padding: calc(98px + env(safe-area-inset-top, 0px)) 0 0;
   display: flex;
   flex-direction: column;
   background: transparent;
@@ -51,6 +51,9 @@
   text-transform: uppercase;
   text-align: center;
   white-space: nowrap;
+  max-width: 100%;
+  padding: 0 8px;
+  box-sizing: border-box;
 }
 
 .workPage__index {
@@ -456,15 +459,23 @@
 
 @media (max-width: 800px) {
   .workPage {
-    padding-top: 84px;
+    padding-top: calc(84px + env(safe-area-inset-top, 0px));
+    padding-bottom: env(safe-area-inset-bottom, 0px);
     --work-thumb: clamp(112px, 58vw, min(270px, 88vw));
+  }
+
+  .workPage__title {
+    font-size: clamp(56px, 15vw, 160px);
+    white-space: normal;
+    line-height: 0.88;
   }
 
   .workPage__hero {
     width: calc(100vw - 4px);
     margin: 0 2px;
     min-height: 170px;
-    padding: 8px 14px 20px;
+    padding: 8px max(14px, env(safe-area-inset-right, 0px)) 20px
+      max(14px, env(safe-area-inset-left, 0px));
   }
 
   .workPage__index {
@@ -482,10 +493,49 @@
 
   .workPage__card,
   .workPage__card:first-child {
-    border-left: 1px solid rgba(11, 11, 11, 0.36);
-    min-height: 320px;
+    border-left: 0;
+    border-right: none;
+    border-top: 1px solid rgba(11, 11, 11, 0.14);
+    border-bottom: none;
+    min-height: 0;
     height: auto;
     overflow: visible;
+    padding: 16px 12px;
+    gap: 0;
+    background: transparent;
+    -webkit-tap-highlight-color: rgba(11, 11, 11, 0.06);
+  }
+
+  /* Mobile: treat each work item as a single glass rectangle. */
+  .workPage__cardHead {
+    width: 100%;
+    background: rgba(255, 255, 255, 0.14);
+    border: 1px solid rgba(255, 255, 255, 0.42);
+    border-bottom: none; /* remove seam between title and company line */
+    border-radius: 16px 16px 0 0;
+    padding: 14px 16px 10px;
+    gap: 6px;
+    backdrop-filter: blur(40px) saturate(190%);
+    -webkit-backdrop-filter: blur(40px) saturate(190%);
+  }
+
+  /* Tighten spacing between title (e.g. EMPLOYER BRAND) and company (e.g. THE WALT DISNEY COMPANY). */
+  .workPage__cardMeta--collapsed {
+    display: block;
+    width: 100%;
+    margin-top: 0;
+    padding-top: 0;
+    padding: 10px 16px 14px;
+    background: rgba(255, 255, 255, 0.14);
+    border-left: 1px solid rgba(255, 255, 255, 0.42);
+    border-right: 1px solid rgba(255, 255, 255, 0.42);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.42);
+    border-top: none;
+    border-radius: 0 0 16px 16px;
+    backdrop-filter: blur(40px) saturate(190%);
+    -webkit-backdrop-filter: blur(40px) saturate(190%);
+    line-height: 1.25;
+    letter-spacing: 0.07em;
   }
 
   .workPage__card.is-active,
@@ -521,5 +571,22 @@
 
   .workPage__blurb {
     margin-top: 28px;
+  }
+}
+
+@media (max-width: 640px) {
+  .workPage__hero {
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-end;
+    gap: 6px;
+    text-align: center;
+  }
+
+  .workPage__index {
+    align-self: center;
+    margin-top: 0;
+    margin-bottom: 0;
+    font-size: clamp(14px, 3.5vw, 20px);
   }
 }
