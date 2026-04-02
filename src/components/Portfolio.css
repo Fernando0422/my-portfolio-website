@@ -1,158 +1,525 @@
-/* Portfolio Container Styling */
-.portfolio-page-container {
-    position: relative;
-    min-height: 100vh;
-    padding: 100px 40px 40px;
+.workPage {
+  position: relative;
+  z-index: 0;
+  min-height: 100vh;
+  padding: 98px 0 0;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  color: rgba(11, 11, 11, 0.96);
+  /* Single-page layout: hero at top, project columns pinned to viewport bottom */
+  box-sizing: border-box;
+  /* Responsive square thumbnails (~3× the old 90px cap on large screens) */
+  --work-thumb: clamp(100px, 28vw, 270px);
+}
+
+.workPage__vanta {
+  position: fixed;
+  inset: 0;
+  z-index: -1;
+  pointer-events: none;
+}
+
+.workPage__hero {
+  width: calc(100vw - 8px);
+  margin: 0 4px;
+  flex-shrink: 0;
+  border-bottom: none;
+  display: flex;
+  align-items: flex-end;
+  justify-content: space-between;
+  padding: clamp(40px, 10vh, 120px) 42px clamp(28px, 4vh, 48px);
+  min-height: clamp(220px, 32vh, 420px);
+}
+
+/* Title only — no DSGN-style index on the right */
+.workPage__hero--solo {
+  justify-content: center;
+}
+
+.workPage__hero--solo .workPage__title {
+  text-align: center;
+}
+
+.workPage__title {
+  margin: 0;
+  font-family: var(--font-display);
+  font-weight: 700;
+  font-size: clamp(84px, 16vw, 220px);
+  line-height: 0.92;
+  letter-spacing: -0.08em;
+  text-transform: uppercase;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.workPage__index {
+  align-self: flex-end;
+  margin-top: 0;
+  margin-bottom: 0.12em;
+  font-family: var(--font-mono);
+  font-size: clamp(28px, 2.8vw, 42px);
+  font-weight: 700;
+  letter-spacing: -0.02em;
+  text-transform: uppercase;
+}
+
+.workPage__grid {
+  position: relative;
+  isolation: isolate;
+  width: calc(100vw - 8px);
+  margin: 0 4px;
+  margin-top: auto;
+  display: flex;
+  flex-shrink: 0;
+  min-height: 620px;
+  border: none;
+  border-top: none;
+  align-items: stretch;
+  background: transparent;
+}
+
+/* Hide hairline / border seam between hero and column strip (behind cards, no hit-target overlap) */
+.workPage__grid::before {
+  content: "";
+  position: absolute;
+  left: 0;
+  right: 0;
+  top: -2px;
+  height: 4px;
+  background: transparent;
+  pointer-events: none;
+  z-index: -1;
+}
+
+.workPage__card {
+  flex: 1 1 0;
+  min-width: 0;
+  min-height: 620px;
+  height: auto;
+  padding: clamp(22px, 3.2vw, 48px) clamp(16px, 2.4vw, 44px) clamp(28px, 4vw, 56px);
+  overflow: visible;
+  border-top: none;
+  border-bottom: none;
+  border-right: 1px solid rgba(11, 11, 11, 0.36);
+  color: rgba(11, 11, 11, 0.96);
+  text-decoration: none;
+  display: flex;
+  flex-direction: column;
+  background: transparent;
+  gap: clamp(14px, 2vw, 26px);
+  box-sizing: border-box;
+  transition:
+    flex 1.35s cubic-bezier(0.22, 1, 0.36, 1),
+    padding 1.35s cubic-bezier(0.22, 1, 0.36, 1),
+    background-color 0.65s ease,
+    color 0.65s ease,
+    border-color 0.65s ease,
+    box-shadow 0.65s ease;
+}
+
+.workPage__card:first-child {
+  border-left: 1px solid rgba(11, 11, 11, 0.36);
+}
+
+.workPage__card:hover {
+  background: rgba(255, 255, 255, 0.86);
+}
+
+.workPage__card.is-active {
+  flex: 2.55 1 0;
+  padding: clamp(36px, 4.6vw, 56px) clamp(28px, 3.8vw, 52px) clamp(40px, 5vw, 64px);
+  background: rgba(255, 255, 255, 0.92);
+  border: none;
+  border-top: none;
+  border-left: 1px solid rgba(11, 11, 11, 0.52);
+  border-right: 1px solid rgba(11, 11, 11, 0.52);
+  border-bottom: 1px solid rgba(11, 11, 11, 0.52);
+  z-index: 2;
+  box-shadow: none;
+}
+
+.workPage__card.is-dim {
+  flex: 0.82 1 0;
+}
+
+.workPage__cardHead {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 10px;
+  flex-shrink: 0;
+}
+
+.workPage__card.is-active .workPage__cardHead {
+  flex-direction: row;
+  justify-content: space-between;
+  align-items: flex-start;
+  gap: clamp(12px, 2vw, 28px);
+}
+
+.workPage__number {
+  font-family: var(--font-mono);
+  font-size: clamp(15px, 1.35vw, 19px);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  color: rgba(11, 11, 11, 0.78);
+  text-transform: uppercase;
+}
+
+.workPage__cardTitle {
+  margin: 0;
+  font-family: var(--font-display);
+  font-size: clamp(36px, 2.7vw, 58px);
+  font-weight: 700;
+  line-height: 0.94;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+.workPage__card.is-active .workPage__cardTitle {
+  text-align: right;
+  font-size: clamp(36px, 2.7vw, 56px);
+  display: inline-flex;
+  flex-wrap: nowrap;
+  align-items: baseline;
+  gap: 0.4em;
+}
+
+.workPage__card.is-active .workPage__cardTitle::before {
+  content: "//";
+  flex-shrink: 0;
+  margin-right: 0;
+  letter-spacing: 0;
+  animation: workPageSlashBlink 2.4s ease-in-out infinite;
+  animation-delay: 80ms;
+  will-change: opacity;
+}
+
+.workPage__cardMeta {
+  font-family: var(--font-mono);
+  font-size: clamp(14px, 1.15vw, 17px);
+  font-weight: 800;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: rgba(11, 11, 11, 0.82);
+  line-height: 1.35;
+}
+
+.workPage__cardMeta--collapsed {
+  margin-top: auto;
+  padding-top: 14px;
+}
+
+.workPage__card:hover .workPage__cardMeta--collapsed,
+.workPage__card.is-active .workPage__cardMeta--collapsed {
+  font-size: clamp(16px, 1.28vw, 19px);
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  color: rgba(11, 11, 11, 0.92);
+}
+
+.workPage__cardMeta--expanded {
+  display: none;
+  margin: 0 0 clamp(14px, 1.8vw, 22px);
+  letter-spacing: 0.08em;
+  color: rgba(11, 11, 11, 0.88);
+}
+
+.workPage__card:hover .workPage__cardMeta--expanded,
+.workPage__card.is-active .workPage__cardMeta--expanded {
+  font-size: clamp(16px, 1.28vw, 19px);
+  font-weight: 900;
+  letter-spacing: 0.09em;
+  color: rgba(11, 11, 11, 0.94);
+}
+
+.workPage__card.is-active .workPage__cardMeta--expanded {
+  display: block;
+}
+
+.workPage__card.is-active .workPage__cardMeta--collapsed {
+  display: none;
+}
+
+.workPage__details {
+  margin-top: 0;
+  display: flex;
+  flex-direction: column;
+  gap: 0;
+  flex: 1;
+  min-height: 0;
+  opacity: 0;
+  transform: translateY(10px);
+  max-height: 0;
+  overflow: hidden;
+  pointer-events: none;
+  transition:
+    opacity 0.95s cubic-bezier(0.22, 1, 0.36, 1) 0.12s,
+    transform 1.15s cubic-bezier(0.22, 1, 0.36, 1) 0.08s,
+    max-height 1.25s cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+.workPage__card.is-active .workPage__details {
+  opacity: 1;
+  transform: translateY(0);
+  max-height: min(680px, 72vh);
+  pointer-events: auto;
+  margin-top: clamp(8px, 1.2vw, 16px);
+}
+
+.workPage__detailBody {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) var(--work-thumb);
+  gap: clamp(28px, 4vw, 56px) clamp(32px, 4.5vw, 64px);
+  align-items: start;
+}
+
+.workPage__detailList {
+  display: grid;
+  gap: clamp(6px, 0.9vw, 12px);
+  padding-right: clamp(4px, 1vw, 12px);
+  font-family: var(--font-display);
+  font-size: clamp(28px, 2.1vw, 40px);
+  font-weight: 500;
+  line-height: 0.98;
+  letter-spacing: -0.01em;
+  text-transform: uppercase;
+}
+
+/* Slash in column 1, label in column 2 so "/" stays on the same row as the text */
+.workPage__detailItem {
+  display: grid;
+  grid-template-columns: auto minmax(0, 1fr);
+  column-gap: 6px;
+  align-items: start;
+  min-width: 0;
+}
+
+.workPage__detailSlash {
+  flex-shrink: 0;
+  line-height: inherit;
+}
+
+.workPage__detailText {
+  min-width: 0;
+}
+
+/* Subtle "editor caret" pulse on slashes — only when panel is expanded */
+@keyframes workPageSlashBlink {
+  0%,
+  40% {
+    opacity: 1;
+  }
+  45%,
+  52% {
+    opacity: 0.2;
+  }
+  55%,
+  100% {
+    opacity: 1;
+  }
+}
+
+.workPage__card.is-active .workPage__detailSlash {
+  animation: workPageSlashBlink 2.4s ease-in-out infinite;
+  will-change: opacity;
+}
+
+.workPage__card.is-active .workPage__detailItem:nth-child(1) .workPage__detailSlash {
+  animation-delay: 0ms;
+}
+
+.workPage__card.is-active .workPage__detailItem:nth-child(2) .workPage__detailSlash {
+  animation-delay: 120ms;
+}
+
+.workPage__card.is-active .workPage__detailItem:nth-child(3) .workPage__detailSlash {
+  animation-delay: 240ms;
+}
+
+.workPage__card.is-active .workPage__detailItem:nth-child(4) .workPage__detailSlash {
+  animation-delay: 360ms;
+}
+
+.workPage__card.is-active .workPage__detailItem:nth-child(5) .workPage__detailSlash {
+  animation-delay: 480ms;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .workPage__card.is-active .workPage__detailSlash,
+  .workPage__card.is-active .workPage__cardTitle::before {
+    animation: none;
+    opacity: 1;
+  }
+}
+
+.workPage__previewWrap {
+  align-self: start;
+  flex-shrink: 0;
+  width: var(--work-thumb);
+  height: var(--work-thumb);
+  max-width: var(--work-thumb);
+  max-height: var(--work-thumb);
+  margin-left: auto;
+  margin-top: clamp(4px, 0.6vw, 10px);
+  background: #f0efea;
+  border: 1px solid rgba(11, 11, 11, 0.22);
+  box-sizing: border-box;
+  overflow: hidden;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  padding: 0;
+}
+
+/* Fixed square frame: all images centered and scaled to fit */
+.workPage__previewWrap .workPage__preview {
+  width: 100%;
+  height: 100%;
+  max-width: 100%;
+  max-height: 100%;
+  min-height: 0;
+  object-fit: cover;
+  object-position: center;
+  display: block;
+  flex: 1 1 auto;
+}
+
+.workPage__card.is-active .workPage__detailBody {
+  grid-template-columns: minmax(0, 1fr) var(--work-thumb);
+}
+
+.workPage__card.is-active .workPage__previewWrap {
+  width: var(--work-thumb);
+  height: var(--work-thumb);
+  max-width: var(--work-thumb);
+  max-height: var(--work-thumb);
+}
+
+.workPage__blurb {
+  margin: clamp(36px, 5vw, 56px) 0 0;
+  padding-top: clamp(8px, 1vw, 14px);
+  max-width: 56ch;
+  font-family: var(--font-mono);
+  font-size: clamp(15px, 1.25vw, 20px);
+  font-weight: 700;
+  line-height: 1.48;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(11, 11, 11, 0.88);
+}
+
+@media (max-width: 1100px) {
+  .workPage {
+    --work-thumb: clamp(96px, 32vw, 240px);
+  }
+
+  .workPage__hero,
+  .workPage__grid {
+    width: calc(100vw - 6px);
+    margin-left: 3px;
+    margin-right: 3px;
+  }
+
+  .workPage__grid {
+    margin-top: auto;
+  }
+
+  .workPage__card {
+    min-height: 0;
+  }
+
+  .workPage__detailBody {
+    grid-template-columns: 1fr var(--work-thumb);
+    gap: 24px 32px;
+  }
+
+  .workPage__previewWrap {
+    width: var(--work-thumb);
+    height: var(--work-thumb);
+    max-width: var(--work-thumb);
+    max-height: var(--work-thumb);
+  }
+
+  .workPage__card.is-active .workPage__previewWrap {
+    width: var(--work-thumb);
+    height: var(--work-thumb);
+    max-width: var(--work-thumb);
+    max-height: var(--work-thumb);
+  }
+
+  .workPage__detailList {
+    font-size: 24px;
+  }
+}
+
+@media (max-width: 800px) {
+  .workPage {
+    padding-top: 84px;
+    --work-thumb: clamp(112px, 58vw, min(270px, 88vw));
+  }
+
+  .workPage__hero {
+    width: calc(100vw - 4px);
+    margin: 0 2px;
+    min-height: 170px;
+    padding: 8px 14px 20px;
+  }
+
+  .workPage__index {
+    margin-top: 10px;
+    font-size: 20px;
+  }
+
+  .workPage__grid {
+    width: calc(100vw - 4px);
+    margin-left: 2px;
+    margin-right: 2px;
+    margin-top: auto;
+    flex-direction: column;
+  }
+
+  .workPage__card,
+  .workPage__card:first-child {
+    border-left: 1px solid rgba(11, 11, 11, 0.36);
+    min-height: 320px;
+    height: auto;
     overflow: visible;
-    background-color: var(--primary-bg);
-    z-index: 1;
-}
-  
-/* Portfolio Banner Styling */
-.portfolio-page-banner {
-    width: 100%;
-    overflow: hidden;
-    white-space: nowrap;
-    font-size: 6rem;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    height: 150px;
-    background-color: #FCFFF6;
-    position: relative;
-    z-index: 10; /* Ensure banner is on top */
-    margin-bottom: 60px; /* Adds spacing below banner */
-}
-  
-.portfolio-page-text {
-    display: inline-block;
-    white-space: nowrap;
-    will-change: transform;
-    color: #000000;
-    font-family: 'Michroma', sans-serif;
-    font-size: 4rem;
-    font-weight: 600;
-}
+  }
 
-/* Rectangles Section */
-.portfolio-page-rounded-rectangles {
-    display: flex;
-    justify-content: space-between;
-    align-items: center;
-    margin-top: 60px;
-    position: relative;
-    z-index: 1; /* Lower than the banner */
-}
+  .workPage__card.is-active,
+  .workPage__card.is-dim {
+    flex: 1 1 auto;
+  }
 
-/* Rectangle Link: Ensures the entire rectangle is clickable */
-.portfolio-page-rectangle-link {
-    display: block;
-    width: 100%; /* Ensures the link stretches the entire rectangle */
-    height: 100%; /* Ensures the link stretches the entire rectangle */
-}
+  .workPage__details {
+    margin-top: 8px;
+  }
 
-.portfolio-page-rectangle {
-    position: relative;
-    width: 90%;
-    height: 500px;
-    background-color: #d1d1d1;
-    border-radius: 20px;
-    display: flex;
-    justify-content: center;
-    align-items: center;
-    box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-    overflow: hidden;
-    transition: transform 0.3s ease-in-out;
-}
+  .workPage__card.is-active .workPage__details {
+    max-height: none;
+  }
 
-.portfolio-page-rectangle-image {
-    width: 100%;
-    height: 100%;
-    object-fit: cover;
-    object-position: center; /* Ensure it centers the image */
-    transition: filter 0.3s ease-in-out;
-}
+  .workPage__detailBody {
+    grid-template-columns: 1fr;
+    gap: 20px;
+  }
 
-/* Hover effect for rectangles */
-.portfolio-page-rectangle:hover .portfolio-page-rectangle-image {
-    filter: blur(5px);
-}
+  .workPage__previewWrap {
+    width: var(--work-thumb);
+    height: var(--work-thumb);
+    max-width: var(--work-thumb);
+    max-height: var(--work-thumb);
+    margin-left: auto;
+    margin-right: auto;
+  }
 
-.portfolio-page-rectangle::before {
-    content: "";
-    position: absolute;
-    top: 0;
-    left: 0;
-    width: 100%;
-    height: 100%;
-    background-color: rgba(0, 0, 0, 0); /* Initially transparent */
-    transition: background-color 0.3s ease-in-out;
-    z-index: 1;
-}
+  .workPage__detailList {
+    font-size: 22px;
+  }
 
-/* Hover effect - slight dark overlay */
-.portfolio-page-rectangle:hover::before {
-    background-color: rgba(0, 0, 0, 0.4); /* Slight black shade on hover */
-}
-
-/* Company Name and Blurb Styling */
-.portfolio-page-company-name {
-    position: absolute;
-    top: 40px;
-    left: 30px;
-    color: white;
-    font-size: 0.7rem;
-    font-weight: 300;
-    text-transform: uppercase;
-    letter-spacing: 2px;
-    z-index: 2;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-}
-
-.portfolio-page-rectangle:hover .portfolio-page-company-name {
-    opacity: 1;
-}
-
-.portfolio-page-blurb {
-    position: absolute;
-    bottom: 20px;
-    left: 20px;
-    color: white;
-    font-family: 'Mulish', sans-serif; /* Mulish font */
-    font-size: 2rem;
-    font-weight: 600; /* SemiBold weight */
-    z-index: 2;
-    opacity: 0;
-    transition: opacity 0.3s ease-in-out;
-    max-width: 280px;
-}
-
-.portfolio-page-rectangle:hover .portfolio-page-blurb {
-    opacity: 1;
-}
-
-/* Media Queries for Responsiveness */
-@media (max-width: 768px) {
-    .portfolio-page-container {
-        padding: 80px 20px 20px;
-    }
-
-    .portfolio-page-text {
-        font-size: 2rem;
-    }
-
-    .portfolio-page-rounded-rectangles {
-        flex-direction: column;
-        position: relative;
-        bottom: 4rem;
-    }
-
-    .portfolio-page-rectangle {
-        width: 100%;
-        margin-bottom: 30px;
-        
-    }
-    
-
+  .workPage__blurb {
+    margin-top: 28px;
+  }
 }

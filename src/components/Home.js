@@ -1,38 +1,53 @@
-import React from 'react';
-import './Home.css';
-import ClothSimulation from './ClothSimulation';
+import React from "react";
+import "./Home.css";
+import GradientBackdrop from "./backgrounds/GradientBackdrop";
 
-function Home() {
+export default function Home() {
   return (
-    <div className="home-container">
-      <div className="cloth-background">
-        <ClothSimulation />
-      </div>
-      <div className="content-wrapper">
-        <div className="text-content">
-          <p className="intro-small-text">HELLO THERE!</p>
-          <h1 className="intro-main-text">
-            I'm Fernando Rojas,<br />
-            a creative Frontend<br />
-            developer. <br></br>
-            <a href="mailto:Fernando.rojas0422@gmail.com">
-              <img 
-                src={`${process.env.PUBLIC_URL}/images/contact.png`} 
-                alt="Contact Me" 
-                className="contact-icon"
+    <>
+      <GradientBackdrop />
+
+      <main className="home">
+        <section className="olhaHero" aria-label="Hero">
+          <div className="olhaHero__titleRow">
+            <h1 className="olhaHero__title">VENTURE OPERATOR</h1>
+          <div className="olhaHero__location">
+            <span>BASED</span>
+            <span className="olhaHero__locationMiddle">IN</span>
+            <span>LOS ANGELES</span>
+          </div>
+          </div>
+
+          <div className="olhaHero__workRow">
+            <div className="olhaHero__list">
+              <span>REAL ESTATE TECH</span>
+              <span>PRODUCT SYSTEMS</span>
+              <span>GLOBAL MARKETS</span>
+            </div>
+
+            <div className="olhaHero__photo" aria-hidden="true">
+              <img
+                src={`${process.env.PUBLIC_URL}/images/hero-olha.png`}
+                alt=""
+                draggable="false"
               />
-            </a>
-          </h1>
-        </div>
-      </div>
-      {/* Footer */}
-      <footer className="footer">
-        <p>
-          Made with ❤️ using React, Locomotive Scroll, GSAP, and p5.js
-        </p>
-      </footer>
-    </div>
+            </div>
+          </div>
+
+          <div className="olhaHero__copy">
+            <div>
+              I BUILD VENTURES AT THE INTERSECTION OF TECHNOLOGY AND REAL ESTATE.
+            </div>
+            <div>
+              DESIGN, ENGINEERING, AND BUSINESS STRATEGY IN ONE PERSON.
+            </div>
+          </div>
+
+          <a className="olhaHero__recentWork" href="/#/portfolio">
+            RECENT WORK <span aria-hidden="true">↓</span>
+          </a>
+        </section>
+      </main>
+    </>
   );
 }
-
-export default Home;

@@ -2,38 +2,33 @@ Welcome to my personal portfolio website! This site showcases my work, skills, a
 
 
 Overview
-This portfolio was created using React, with Locomotive Scroll for smooth scrolling effects and GSAP for engaging animations. It’s designed to be fully responsive and user-friendly, providing a seamless experience across desktop and mobile devices.
-
+This portfolio is built with React (Create React App), React Router (HashRouter for GitHub Pages), GSAP + Framer Motion for motion, and Vanta/Three.js for background effects. It is responsive and designed for GitHub Pages at https://fernandorojas.xyz.
 
 Features
-Dynamic Animations: Enhanced animations and smooth scrolling to bring the content to life.
-
-Responsive Design: Optimized for various screen sizes, ensuring a consistent look and feel on any device.
-
-Projects Section: A display of my recent projects with descriptions, tools used, and links to live demos or code.
-
-Professional Experience: Highlights of my professional experience, showcasing the companies I’ve worked with and my contributions.
+- Page transitions and scroll-driven animation (GSAP ScrollTrigger where used).
+- Work grid with case-study-style project pages.
+- About page with education, skills, and experience timeline.
 
 Technologies Used
+- React, react-router-dom, react-scripts
+- GSAP, Framer Motion
+- Vanta, three
 
-React: For building and structuring the UI.
+Documentation
 
-GSAP: Used for animations and scroll effects.
-
-Locomotive Scroll: Provides smooth and natural scrolling.
-
-CSS: For styling the layout and components.
+- **[Styling guide](docs/STYLING_GUIDE.md)** — site-wide design tokens, typography, page map, and widgets; reference this for any new page or component.
+- **[Case study page style guide](docs/CASE_STUDY_STYLE_GUIDE.md)** — typography, layout, and tokens for project detail pages (e.g. Disney).
 
 Getting Started
 
 To explore or modify this project locally:
 
 Clone this repository:
-git clone https://github.com/Fernando0422/portfolio-website.git
+git clone https://github.com/Fernando0422/my-portfolio-website.git
 
 Navigate to the project directory:
 
-cd portfolio-website
+cd my-portfolio-website
 
 Install dependencies:
 
@@ -52,9 +47,12 @@ In the project directory, you can run:
 npm start: Runs the app in development mode.
 
 npm run build: Builds the app for production, optimizing for performance.
+
+npm run deploy: Builds and publishes the `build` folder to the `gh-pages` branch.
+
 Deployment
 
-This site is hosted on GitHub Pages. You can view the live site at: https://fernandorojas.xyz
+This site is hosted on GitHub Pages. Live site: https://fernandorojas.xyz. Custom domain is configured via `public/CNAME`.
 
 About Me
 

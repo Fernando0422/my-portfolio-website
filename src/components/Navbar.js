@@ -1,74 +1,121 @@
-import React, { useState, useEffect } from 'react';
-import { Link, useLocation } from 'react-router-dom';
-import { motion, AnimatePresence } from 'framer-motion';
-import './Navbar.css';
+import React, { useEffect, useMemo, useState } from "react";
+import { NavLink, useLocation } from "react-router-dom";
+import { motion, AnimatePresence } from "framer-motion";
+import "./Navbar.css";
 
-function Navbar() {
-  const [isOpen, setIsOpen] = useState(false);
-  const location = useLocation();
-
-  const toggleMenu = () => {
-    setIsOpen(!isOpen);
-  };
-
-  // Effect to add fade-in effect for menu items when menu opens
-  useEffect(() => {
-    if (isOpen) {
-      const items = document.querySelectorAll('.menu ul li');
-      items.forEach((item, index) => {
-        setTimeout(() => item.classList.add('fade-in'), index * 100);
-      });
-    } else {
-      const items = document.querySelectorAll('.menu ul li');
-      items.forEach((item) => {
-        item.classList.remove('fade-in');
-      });
-    }
-  }, [isOpen]);
-
-  return (
-    <nav className={`navbar ${isOpen ? 'menu-open' : ''}`}>
-      <img src={`${process.env.PUBLIC_URL}/images/logo.png`} alt="Logo" className="header-logo" />
-      
-      {/* Menu icon for toggling */}
-      <div className="menu-icon" onClick={toggleMenu}>
-        <div className="menu-line"></div>
-        <div className="menu-line"></div>
-        <div className="menu-line"></div>
-      </div>
-      
-      <AnimatePresence>
-        {isOpen && (
-          <motion.div
-            className="menu"
-            initial={{ y: '-100%' }}
-            animate={{ y: 0 }}
-            exit={{ y: '-100%' }}
-            transition={{ duration: 0.5 }}
-          >
-            {/* Close icon */}
-            <div className="close-icon" onClick={toggleMenu}>X</div>
-            
-            {/* Menu Links */}
-            <ul>
-              <li className={location.pathname === '/' ? 'active' : ''}>
-                <Link to="/" onClick={toggleMenu}>Home</Link>
-              </li>
-              <li className={location.pathname === '/about' ? 'active' : ''}>
-                <Link to="/about" onClick={toggleMenu}>About</Link>
-              </li>
-              <li className={location.pathname === '/portfolio' ? 'active' : ''}>
-                <Link to="/portfolio" onClick={toggleMenu}>Portfolio</Link>
-              </li>
-              <li>
-                <a href="mailto:Fernando.rojas0422@gmail.com" onClick={toggleMenu}>Connect</a>
-              </li>
-            </ul>
-          </motion.div>
-        )}
-      </AnimatePresence>
-    </nav>
-  );
+function getActiveKey(pathname) {
+  if (pathname === "/") return "home";
+  if (pathname.startsWith("/portfolio")) return "work";
+  if (pathname.startsWith("/work")) return "work";
+  if (pathname.startsWith("/about")) return "about";
+  if (pathname.startsWith("/contact")) return "contact";
+  return "";
 }
 
-export default Navbar;
+export default function Navbar() {
+  const location = useLocation();
+  const [scrolled, setScrolled] = useState(false);
+
+  useEffect(() => {
+    const onScroll = () => {
+      setScrolled(window.scrollY > 20);
+    };
+    onScroll();
+    window.addEventListener("scroll", onScroll, { passive: true });
+    return () => window.removeEventListener("scroll", onScroll);
+  }, []);
+
+  useEffect(() => {
+    setScrolled(window.scrollY > 20);
+  }, [location.pathname]);
+
+  const items = useMemo(
+    () => [
+      { key: "home", label: "Home", to: "/", end: true },
+      { key: "work", label: "Work", to: "/portfolio", end: true },
+      { key: "about", label: "About", to: "/about" },
+      {
+        key: "contact",
+        label: "Contact",
+        to: "mailto:Fernando.rojas0422@gmail.com",
+      },
+    ],
+    []
+  );
+
+  const activeKey = useMemo(
+    () => getActiveKey(location.pathname),
+    [location.pathname]
+  );
+
+  return (
+    <header className={`topbar${scrolled ? " topbar--solid" : ""}`}>
+      <div className="topbar__shell">
+        <nav className="pillnav" aria-label="Primary">
+          <ul className="pillnav__list">
+            {items.map((item) => {
+              const isActive = activeKey === item.key;
+
+              if (item.key === "contact") {
+                return (
+                  <li key={item.key} className="pillnav__item">
+                    <a
+                      href={item.to}
+                      className={`pillnav__link ${isActive ? "is-active" : ""}`}
+                    >
+                      <AnimatePresence initial={false}>
+                        {isActive && (
+                          <motion.span
+                            className="pillnav__active"
+                            layoutId="navActivePill"
+                            transition={{
+                              type: "spring",
+                              stiffness: 520,
+                              damping: 40,
+                              mass: 0.9,
+                            }}
+                            aria-hidden="true"
+                          />
+                        )}
+                      </AnimatePresence>
+
+                      <span className="pillnav__label">{item.label}</span>
+                    </a>
+                  </li>
+                );
+              }
+
+              return (
+                <li key={item.key} className="pillnav__item">
+                  <NavLink
+                    to={item.to}
+                    end={item.end ?? false}
+                    className={`pillnav__link ${isActive ? "is-active" : ""}`}
+                  >
+                    <AnimatePresence initial={false}>
+                      {isActive && (
+                        <motion.span
+                          className="pillnav__active"
+                          layoutId="navActivePill"
+                          transition={{
+                            type: "spring",
+                            stiffness: 520,
+                            damping: 40,
+                            mass: 0.9,
+                          }}
+                          aria-hidden="true"
+                        />
+                      )}
+                    </AnimatePresence>
+
+                    <span className="pillnav__label">{item.label}</span>
+                  </NavLink>
+                </li>
+              );
+            })}
+          </ul>
+        </nav>
+      </div>
+    </header>
+  );
+}

@@ -1,0 +1,189 @@
+/* MayanRoots — case study styling aligned with Disney / CASE_STUDY_STYLE_GUIDE.md */
+
+.caseStudy--mayanroots .caseStudy__back {
+  margin-bottom: clamp(28px, 4vw, 40px);
+}
+
+.caseStudy--mayanroots .caseStudy__hero {
+  padding: clamp(28px, 5vw, 52px) 0 clamp(48px, 7vw, 72px);
+}
+
+.caseStudy--mayanroots .caseStudy__eyebrow {
+  margin-bottom: clamp(24px, 3.5vw, 40px);
+}
+
+.caseStudy--mayanroots .caseStudy__subhead--mayanrootsIntro {
+  --mayanroots-intro-size: clamp(16px, 1.25vw, 19px);
+
+  max-width: none;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+  font-size: var(--mayanroots-intro-size);
+  line-height: 1.5;
+  margin-top: clamp(28px, 4vw, 44px);
+  margin-bottom: clamp(8px, 1.5vw, 16px);
+}
+
+.caseStudy--mayanroots .caseStudy__subheadBody {
+  font-family: var(--font-mono);
+  font-size: 1em;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(11, 11, 11, 0.9);
+}
+
+.caseStudy--mayanroots .caseStudy__heroMedia {
+  margin-top: clamp(52px, 8vw, 84px);
+}
+
+.caseStudy--mayanroots .caseStudy__heroMedia--mayanroots {
+  background: #1c2218;
+  border-color: rgba(11, 11, 11, 0.14);
+}
+
+.caseStudy--mayanroots
+  .caseStudy__heroMedia--browser.caseStudy__heroMedia--mayanroots
+  .caseStudy__heroImg {
+  max-height: min(580px, 74vh);
+  object-fit: cover;
+  object-position: center 35%;
+}
+
+.caseStudy--mayanroots
+  .caseStudy__heroMedia--mayanroots
+  .caseStudy__heroCaption {
+  background: rgba(252, 255, 246, 0.92);
+}
+
+.caseStudy--mayanroots .caseStudy__section {
+  margin-top: clamp(52px, 8vw, 96px);
+}
+
+.caseStudy--mayanroots .caseStudy__sectionTitle {
+  margin-bottom: clamp(28px, 4vw, 40px);
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.8vw, 52px);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.94);
+}
+
+.caseStudy--mayanroots .caseStudy__prose p {
+  font-family: var(--font-mono);
+  font-size: clamp(18px, 1.35vw, 21px);
+  font-weight: 500;
+  line-height: 1.58;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(11, 11, 11, 0.76);
+}
+
+.caseStudy--mayanroots .caseStudy__metaLabel {
+  font-family: var(--font-display);
+  font-size: clamp(17px, 1.35vw, 21px);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 1.35;
+  color: rgba(0, 0, 0, 0.96);
+  text-transform: uppercase;
+}
+
+.caseStudy--mayanroots .caseStudy__prose p + p {
+  margin-top: clamp(18px, 2.5vw, 28px);
+}
+
+.caseStudy--mayanroots .caseStudy__prose--mayanrootsOverview {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 2.8vw, 32px);
+}
+
+.caseStudy--mayanroots .caseStudy__prose--mayanrootsOverview p + p {
+  margin-top: 0;
+}
+
+.caseStudy--mayanroots .caseStudy__list {
+  gap: clamp(28px, 4vw, 36px);
+}
+
+.caseStudy--mayanroots .caseStudy__list li {
+  padding-bottom: clamp(28px, 4vw, 36px);
+}
+
+.caseStudy--mayanroots .caseStudy__gallery--mayanrootsPhone {
+  grid-template-columns: minmax(0, min(420px, 100%));
+  justify-content: start;
+  gap: clamp(18px, 2.5vw, 22px);
+}
+
+.caseStudy--mayanroots .caseStudy__galleryItem--mayanrootsPhone {
+  border: 2px solid #0b0b0b;
+  background: linear-gradient(165deg, #3d4a38 0%, #2a3326 100%);
+  overflow: hidden;
+}
+
+.caseStudy--mayanroots .caseStudy__galleryItem--mayanrootsPhone img {
+  display: block;
+  width: 100%;
+  height: auto;
+  min-height: 0;
+  max-height: min(520px, 70vh);
+  object-fit: contain;
+  object-position: center;
+  padding: clamp(12px, 2vw, 20px);
+  box-sizing: border-box;
+}
+
+.caseStudy--mayanroots .caseStudy__tools {
+  gap: clamp(20px, 3vw, 28px);
+}
+
+.caseStudy--mayanroots .caseStudy__toolsLabel {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 2.05vw, 32px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #0b0b0b;
+  margin-bottom: clamp(8px, 1.2vw, 12px);
+}
+
+.caseStudy--mayanroots .caseStudy__tools p {
+  font-family: var(--font-mono);
+  font-size: clamp(18px, 1.35vw, 21px);
+  font-weight: 500;
+  line-height: 1.58;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(11, 11, 11, 0.76);
+}
+
+.caseStudy--mayanroots .caseStudy__footer {
+  margin-top: clamp(64px, 10vw, 120px);
+  padding-top: clamp(44px, 6vw, 64px);
+  gap: clamp(20px, 3vw, 24px);
+}
+
+@media (max-width: 900px) {
+  .caseStudy--mayanroots
+    .caseStudy__heroMedia--browser.caseStudy__heroMedia--mayanroots
+    .caseStudy__heroImg {
+    max-height: min(440px, 58vh);
+    object-position: center 30%;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .caseStudy--mayanroots .caseStudy__back {
+    transition: none;
+  }
+}

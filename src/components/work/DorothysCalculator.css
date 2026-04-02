@@ -1,211 +1,201 @@
-.dorothys-calculator-container {
-  background-color: var(--primary-bg);
-  color: var(--primary-text);
-  font-family: 'Mulish', sans-serif;
-  padding-bottom: 50px;
+/* Dorothy's Calculator — case study styling aligned with Disney / La Mer / CASE_STUDY_STYLE_GUIDE.md */
+
+.caseStudy--dorothy .caseStudy__back {
+  margin-bottom: clamp(28px, 4vw, 40px);
 }
 
-/* Hero Section */
-.dorothys-calculator-hero {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 50px;
-  padding-top: 30px;
-  background-color: #FCFFF6; /* Optional light background for hero */
+.caseStudy--dorothy .caseStudy__hero {
+  padding: clamp(28px, 5vw, 52px) 0 clamp(48px, 7vw, 72px);
 }
 
-.dorothys-calculator-hero-image {
-  width: auto;
-  max-height: 500px; /* Adjusted for better desktop display */
+.caseStudy--dorothy .caseStudy__eyebrow {
+  margin-bottom: clamp(24px, 3.5vw, 40px);
+}
+
+.caseStudy--dorothy .caseStudy__subhead--dorothyIntro {
+  --dorothy-intro-size: clamp(16px, 1.25vw, 19px);
+
+  max-width: none;
+  width: 100%;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+  font-size: var(--dorothy-intro-size);
+  line-height: 1.5;
+  margin-top: clamp(28px, 4vw, 44px);
+  margin-bottom: clamp(8px, 1.5vw, 16px);
+}
+
+.caseStudy--dorothy .caseStudy__subheadBody {
+  font-family: var(--font-mono);
+  font-size: 1em;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
+  text-transform: uppercase;
+  color: rgba(11, 11, 11, 0.9);
+}
+
+.caseStudy--dorothy .caseStudy__heroMedia {
+  margin-top: clamp(52px, 8vw, 84px);
+}
+
+.caseStudy--dorothy .caseStudy__heroMedia--dcHero {
+  background: linear-gradient(180deg, #faf8fc 0%, #f3f0f7 100%);
+  border-color: rgba(11, 11, 11, 0.14);
+}
+
+.caseStudy--dorothy .caseStudy__heroMedia--dcHero .caseStudy__heroImg {
+  max-height: min(520px, 58vh);
   object-fit: contain;
   object-position: center;
-  border-radius: 20px;
+  padding: clamp(16px, 3vw, 32px);
+  box-sizing: border-box;
 }
 
-/* Description Section */
-.dorothys-calculator-description-section {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 20px;
-}
-
-.dorothys-calculator-left {
-  text-align: left;
-  max-width: 600px;
-}
-
-.dorothys-calculator-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #000;
-  text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
-}
-
-.dorothys-calculator-subtitle {
-  font-size: 2rem;
-  font-weight: 400;
-  color: rgb(0, 0, 0);
-  margin-bottom: 20px;
-  line-height: 1.4;
-  max-width: 500px;
-}
-
-.dorothys-calculator-right {
-  max-width: 700px;
-  margin-top: 20px;
-  text-align: justify;
-}
-
-.dorothys-calculator-description {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: rgb(0, 0, 0);
-  padding: 0 10px;
-}
-
-/* Key Projects & Skills Section */
-.dorothys-calculator-projects-skills-section {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 20px;
-  margin: 30px 0;
-}
-
-.dorothys-calculator-projects-section,
-.dorothys-calculator-skills-section {
-  width: 48%;
-}
-
-.dorothys-calculator-projects-title,
-.dorothys-calculator-skills-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 10px;
-}
-
-.dorothys-calculator-projects-list,
-.dorothys-calculator-skills-description {
-  font-size: 1rem;
-  line-height: 1.6;
-}
-
-.dorothys-calculator-projects-list {
-  list-style: disc;
-  margin-left: 20px;
-}
-
-/* Images Section */
-.dorothys-calculator-images {
-  display: flex;
-  justify-content: center;
-  gap: 10px;
-  padding: 0 20px;
-  margin-top: 30px;
-}
-
-.dorothys-calculator-image {
-  width: 50%;
-}
-
-.dorothys-calculator-img {
+/* Full-bleed Changemaker graphic as primary hero */
+.caseStudy--dorothy
+  .caseStudy__heroMedia--dcChangemakerHero
+  .caseStudy__heroImg {
+  max-height: min(420px, 52vh);
+  padding: 0;
   width: 100%;
-  height: 400px;
   object-fit: cover;
-  border-radius: 20px;
+  object-position: center;
 }
 
-/* Media Queries for Responsiveness */
-@media (max-width: 1024px) {
-  .dorothys-calculator-hero {
-    padding: 0;
-  }
-
-  .dorothys-calculator-left,
-  .dorothys-calculator-right {
-    max-width: 100%;
-  }
-
-  .dorothys-calculator-description {
-    font-size: 1.1rem;
-  }
-
-  .dorothys-calculator-description-section {
-    flex-direction: column;
-    align-items: center;
-  }
-
-  .dorothys-calculator-projects-skills-section {
-    flex-direction: column;
-    align-items: flex-start;
-  }
-
-  .dorothys-calculator-projects-section,
-  .dorothys-calculator-skills-section {
-    width: 100%;
-    margin-bottom: 20px;
-  }
+.caseStudy--dorothy .caseStudy__heroMedia--dcChangemakerHero .caseStudy__heroCaption {
+  text-align: center;
 }
 
-@media (max-width: 768px) {
-  .dorothys-calculator-title {
-    font-size: 1rem;
-  }
-
-  .dorothys-calculator-subtitle {
-    font-size: 1.8rem;
-  }
-
-  .dorothys-calculator-description {
-    font-size: 1rem;
-  }
-
-  .dorothys-calculator-images {
-    flex-direction: column;
-    padding: 0 10px;
-  }
-
-  .dorothys-calculator-image {
-    width: 100%;
-    margin-bottom: 20px;
-  }
-
-  .dorothys-calculator-img {
-    height: 300px;
-  }
-
-  .dorothys-calculator-hero {
-    position: relative;
-    top: 4rem;
-  }
-
-  .dorothys-calculator-hero-image {
-    width: 100%;
-    max-height: 300px; /* Adjusted height for mobile */
-  }
+.caseStudy--dorothy .caseStudy__heroMedia--dcHero .caseStudy__heroCaption {
+  background: rgba(255, 255, 255, 0.88);
 }
 
+.caseStudy--dorothy .caseStudy__section {
+  margin-top: clamp(52px, 8vw, 96px);
+}
 
-@media (max-width: 480px) {
-  .dorothys-calculator-title {
-    font-size: 0.8rem;
-    position: relative;
-    top: 1rem;
-  }
+.caseStudy--dorothy .caseStudy__sectionTitle {
+  margin-bottom: clamp(28px, 4vw, 40px);
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.8vw, 52px);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.94);
+}
 
-  .dorothys-calculator-subtitle {
-    font-size: 1.6rem;
-    margin-bottom: 10px;
-    position: relative;
-    top: 1rem;
-  }
+.caseStudy--dorothy .caseStudy__prose p {
+  font-family: var(--font-mono);
+  font-size: clamp(18px, 1.35vw, 21px);
+  font-weight: 500;
+  line-height: 1.58;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(11, 11, 11, 0.76);
+}
 
-  .dorothys-calculator-description {
-    font-size: 0.9rem;
-  }
+.caseStudy--dorothy .caseStudy__prose p + p {
+  margin-top: clamp(18px, 2.5vw, 28px);
+}
 
-  .dorothys-calculator-img {
-    height: 250px;
-  }
+.caseStudy--dorothy .caseStudy__metaLabel {
+  font-family: var(--font-display);
+  font-size: clamp(17px, 1.35vw, 21px);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 1.35;
+  color: rgba(0, 0, 0, 0.96);
+  text-transform: uppercase;
+}
+
+.caseStudy--dorothy .caseStudy__list {
+  gap: clamp(28px, 4vw, 36px);
+}
+
+.caseStudy--dorothy .caseStudy__list li {
+  padding-bottom: clamp(28px, 4vw, 36px);
+}
+
+.caseStudy--dorothy .caseStudy__tools {
+  gap: clamp(20px, 3vw, 28px);
+}
+
+.caseStudy--dorothy .caseStudy__toolsLabel {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 2.05vw, 32px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #0b0b0b;
+  margin-bottom: clamp(8px, 1.2vw, 12px);
+}
+
+.caseStudy--dorothy .caseStudy__tools p {
+  font-family: var(--font-mono);
+  font-size: clamp(18px, 1.35vw, 21px);
+  font-weight: 500;
+  line-height: 1.58;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(11, 11, 11, 0.76);
+}
+
+.caseStudy--dorothy .caseStudy__gallery {
+  gap: clamp(18px, 2.5vw, 22px);
+  align-items: stretch;
+}
+
+.caseStudy--dorothy .caseStudy__galleryItem {
+  border: 2px solid #0b0b0b;
+  background: #faf8fc;
+  display: grid;
+  place-items: center;
+  min-height: min(260px, 38vw);
+  overflow: hidden;
+}
+
+.caseStudy--dorothy .caseStudy__galleryItem img {
+  display: block;
+  width: 100%;
+  height: 100%;
+  max-height: min(400px, 52vh);
+  min-height: 0;
+  object-fit: contain;
+  object-position: center;
+}
+
+.caseStudy--dorothy .caseStudy__galleryItem--dcLogo {
+  background: linear-gradient(180deg, #faf8fc 0%, #f3f0f7 100%);
+}
+
+.caseStudy--dorothy .caseStudy__galleryItem--dcLogo img {
+  padding: clamp(12px, 2.5vw, 24px);
+  box-sizing: border-box;
+}
+
+.caseStudy--dorothy .caseStudy__footer {
+  margin-top: clamp(64px, 10vw, 120px);
+  padding-top: clamp(44px, 6vw, 64px);
+  gap: clamp(20px, 3vw, 24px);
+}
+
+.caseStudy--dorothy .caseStudy__inlineLink {
+  font-family: var(--font-mono);
+  font-size: 0.92em;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  text-transform: uppercase;
+  color: #0b0b0b;
+  text-decoration: underline;
+  text-underline-offset: 3px;
+}
+
+.caseStudy--dorothy .caseStudy__inlineLink:hover {
+  opacity: 0.75;
 }

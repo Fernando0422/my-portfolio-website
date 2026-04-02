@@ -1,206 +1,288 @@
-.snapchat-container {
-  background-color: var(--primary-bg);
-  color: var(--primary-text);
-  font-family: 'Mulish', sans-serif;
-  padding-bottom: 50px;
+/* Snapchat — brand yellow hero band + gallery video */
+
+/* Vertical rhythm: more air around copy; meta grid cell padding unchanged */
+.caseStudy--snapchat .caseStudy__back {
+  margin-bottom: clamp(28px, 4vw, 40px);
 }
 
-/* Hero Section */
-.snapchat-hero {
-  display: flex;
-  justify-content: center;
-  margin-bottom: 50px;
-  padding-top: 30px;
-  background-color: #F8F16D; /* Yellow background color */
+.caseStudy--snapchat .caseStudy__hero {
+  padding: clamp(28px, 5vw, 52px) 0 clamp(48px, 7vw, 72px);
 }
 
-.snapchat-hero-image {
+.caseStudy--snapchat .caseStudy__eyebrow {
+  margin-bottom: clamp(24px, 3.5vw, 40px);
+}
+
+.caseStudy--snapchat .caseStudy__subhead--snapIntro {
+  --snap-intro-size: clamp(16px, 1.25vw, 19px);
+
+  max-width: none;
   width: 100%;
-  max-height: 400px;
-  object-fit: cover;
-  border-radius: 20px;
+  margin-left: 0;
+  margin-right: 0;
+  padding-left: 0;
+  padding-right: 0;
+  box-sizing: border-box;
+  font-size: var(--snap-intro-size);
+  line-height: 1.5;
+  margin-top: clamp(28px, 4vw, 44px);
+  margin-bottom: clamp(8px, 1.5vw, 16px);
 }
 
-/* Description Section */
-.snapchat-description-section {
-  display: flex;
-  justify-content: space-between;
-  padding: 0 20px;
-}
-
-.snapchat-left {
-  text-align: left;
-  max-width: 600px;
-}
-
-.snapchat-title {
-  font-size: 1.2rem;
-  font-weight: 600;
-  color: #000;
+/* Mono intro line under hero title (dates live in TIMELINE meta column) */
+.caseStudy--snapchat .caseStudy__subheadBody {
+  font-family: var(--font-mono);
+  font-size: 1em;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.05em;
   text-transform: uppercase;
-  letter-spacing: 2px;
-  margin-bottom: 10px;
+  color: rgba(11, 11, 11, 0.9);
 }
 
-.snapchat-subtitle {
-  font-size: 2rem;
-  font-weight: 400;
-  color: rgb(0, 0, 0);
-  margin-bottom: 20px;
-  line-height: 1.4;
-  max-width: 500px;
+.caseStudy--snapchat .caseStudy__heroMedia {
+  margin-top: clamp(52px, 8vw, 84px);
 }
 
-/* Description */
-.snapchat-right {
-  max-width: 700px;
-  margin-top: 20px;
-  text-align: justify;
+.caseStudy--snapchat .caseStudy__heroMedia--snapchat {
+  background: #f8f16d;
+  border-color: rgba(11, 11, 11, 0.14);
 }
 
-.snapchat-description {
-  font-size: 1rem;
-  line-height: 1.8;
-  color: rgb(0, 0, 0);
-  padding: 0 10px;
+.caseStudy--snapchat .caseStudy__heroMedia--snapchat .caseStudy__heroImg {
+  object-position: center center;
 }
 
-/* Images Section */
-.snapchat-images {
+.caseStudy--snapchat .caseStudy__heroCaption {
+  background: rgba(255, 255, 255, 0.88);
+  padding: clamp(18px, 2.5vw, 26px) clamp(20px, 2.5vw, 28px);
+}
+
+.caseStudy--snapchat .caseStudy__section {
+  margin-top: clamp(52px, 8vw, 96px);
+}
+
+/* Section headers: same family as LENS ACADEMY SCHOLAR (Oswald), larger than default mono */
+.caseStudy--snapchat .caseStudy__sectionTitle {
+  margin-bottom: clamp(28px, 4vw, 40px);
+  font-family: var(--font-display);
+  font-size: clamp(28px, 3.8vw, 52px);
+  font-weight: 700;
+  line-height: 1.02;
+  letter-spacing: -0.06em;
+  text-transform: uppercase;
+  color: rgba(0, 0, 0, 0.94);
+}
+
+/* Both OVERVIEW paragraphs: same as KEY IMPACT body (Built 10+ AR / Stanford scholarship) */
+.caseStudy--snapchat .caseStudy__prose p {
+  font-family: var(--font-mono);
+  font-size: clamp(18px, 1.35vw, 21px);
+  font-weight: 500;
+  line-height: 1.58;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(11, 11, 11, 0.76);
+}
+
+/* Meta column headers (CHALLENGE ↘, …): same face as Summer 2023 kickers; slightly larger than body copy */
+.caseStudy--snapchat .caseStudy__metaLabel {
+  font-family: var(--font-display);
+  font-size: clamp(17px, 1.35vw, 21px);
+  font-weight: 700;
+  letter-spacing: -0.06em;
+  line-height: 1.35;
+  color: rgba(0, 0, 0, 0.96);
+  text-transform: uppercase;
+}
+
+/* OVERVIEW: shorter paragraphs + air so mono uppercase does not read as one slab */
+.caseStudy--snapchat .caseStudy__prose--snapOverview {
+  display: flex;
+  flex-direction: column;
+  gap: clamp(20px, 2.8vw, 32px);
+  padding-top: clamp(6px, 1vw, 14px);
+}
+
+.caseStudy--snapchat .caseStudy__prose--snapOverview p {
+  line-height: 1.68;
+}
+
+.caseStudy--snapchat .caseStudy__prose--snapOverview p + p {
+  margin-top: 0;
+}
+
+.caseStudy--snapchat .caseStudy__list {
+  gap: clamp(28px, 4vw, 36px);
+}
+
+.caseStudy--snapchat .caseStudy__list li {
+  padding-bottom: clamp(28px, 4vw, 36px);
+}
+
+.caseStudy--snapchat .caseStudy__tools {
+  gap: clamp(20px, 3vw, 28px);
+}
+
+/* Tool row titles = KEY IMPACT leads (e.g. Stanford Summer Session) */
+.caseStudy--snapchat .caseStudy__toolsLabel {
+  font-family: var(--font-display);
+  font-size: clamp(26px, 2.05vw, 32px);
+  font-weight: 600;
+  line-height: 1.15;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  color: #0b0b0b;
+  margin-bottom: clamp(8px, 1.2vw, 12px);
+}
+
+/* Tool row body = KEY IMPACT body (Stanford bullet paragraph) */
+.caseStudy--snapchat .caseStudy__tools p {
+  font-family: var(--font-mono);
+  font-size: clamp(18px, 1.35vw, 21px);
+  font-weight: 500;
+  line-height: 1.58;
+  letter-spacing: 0.04em;
+  text-transform: uppercase;
+  color: rgba(11, 11, 11, 0.76);
+}
+
+.caseStudy--snapchat .caseStudy__gallery {
+  gap: clamp(18px, 2.5vw, 22px);
+  align-items: stretch;
+}
+
+/* Wider poster column + room for phone mockup */
+.caseStudy--snapchat .caseStudy__gallery--snapPhone {
+  grid-template-columns: minmax(0, 1.45fr) minmax(0, 0.95fr);
+  gap: clamp(24px, 4vw, 40px);
+  align-items: center;
+}
+
+/* Poster: no frame border, larger so the cohort graphic reads clearly */
+.caseStudy--snapchat .caseStudy__gallery--snapPhone .caseStudy__galleryItem--snapPoster {
+  border: none;
+  background: transparent;
+  overflow: visible;
+}
+
+.caseStudy--snapchat .caseStudy__galleryItem--snapPoster {
+  min-height: 0;
+}
+
+.caseStudy--snapchat .caseStudy__gallery--snapPhone .caseStudy__galleryItem--snapPoster img {
+  width: 100%;
+  height: auto;
+  min-height: clamp(320px, 42vw, 520px);
+  max-height: none;
+  object-fit: contain;
+  object-position: center;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.caseStudy--snapchat .caseStudy__galleryItem--snapVideo {
+  border: none;
+  background: transparent;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  min-height: 0;
+}
+
+/* iPhone-style device around lens preview */
+.snapPhoneFrame {
   display: flex;
   justify-content: center;
-  gap: 10px;
-  padding: 0 20px;
-  margin-top: 30px;
-}
-
-.snapchat-image, .snapchat-video {
-  width: 50%;
-}
-
-.snapchat-img, .snapchat-video-loop {
+  align-items: center;
   width: 100%;
-  height: 400px;
-  object-fit: cover;
-  border-radius: 20px;
+  padding: clamp(4px, 1.5vw, 12px);
 }
 
-/* Media Queries for Responsiveness */
-@media (max-width: 1024px) {
-  .snapchat-hero {
-      padding: 0;
-  }
-
-  .snapchat-left, .snapchat-right {
-      max-width: 100%;
-  }
-
-  .snapchat-description {
-      font-size: 1.1rem;
-  }
-
-  /* Stack sections vertically on tablet view */
-  .snapchat-description-section {
-      flex-direction: column;
-      align-items: center;
-  }
-}
-
-@media (max-width: 768px) {
-  .snapchat-title {
-      font-size: 1rem;
-  }
-
-  .snapchat-subtitle {
-      font-size: 1.8rem;
-  }
-  .snapchat-description {
-      font-size: 1rem;
-  }
-
-  .snapchat-images {
-      flex-direction: column;
-      padding: 0 10px;
-  }
-
-  .snapchat-image, .snapchat-video {
-      width: 100%;
-      margin-bottom: 20px;
-  }
-
-  .snapchat-img, .snapchat-video-loop {
-      height: 300px;
-  }
-
-  .snapchat-hero {
-      position: relative;
-      top: 4rem;
-  }
-}
-
-@media (max-width: 480px) {
-  .snapchat-title {
-      font-size: 0.8rem;
-      position: relative;
-      top: 1.4rem;
-  }
-
-  .snapchat-subtitle {
-      font-size: 1.6rem;
-      margin-bottom: 10px;
-      position: relative;
-      top: 1rem;
-  }
-
-  .snapchat-description {
-      font-size: 0.9rem;
-  }
-
-  .snapchat-img, .snapchat-video-loop {
-      height: 250px;
-  }
-}
-/* Key Projects & Skills Section */
-.snapchat-projects-skills-section {
+.snapPhoneFrame__device {
   display: flex;
-  justify-content: space-between;
-  padding: 0 20px;
-  margin: 30px 0;
+  flex-direction: column;
+  align-items: center;
+  width: min(100%, 300px);
+  max-width: 100%;
+  padding: 14px 12px 12px;
+  border-radius: 42px;
+  background: linear-gradient(160deg, #2a2a2a 0%, #0c0c0c 55%, #141414 100%);
+  box-shadow:
+    0 0 0 2px #1a1a1a,
+    0 22px 44px rgba(0, 0, 0, 0.22),
+    inset 0 1px 0 rgba(255, 255, 255, 0.06);
 }
 
-.snapchat-projects-section,
-.snapchat-skills-section {
-  width: 48%;
+.snapPhoneFrame__notch {
+  width: 38%;
+  max-width: 112px;
+  height: 24px;
+  margin-bottom: 8px;
+  border-radius: 999px;
+  background: #0a0a0a;
+  flex-shrink: 0;
+  box-shadow: inset 0 -1px 0 rgba(255, 255, 255, 0.05);
 }
 
-.snapchat-projects-title,
-.snapchat-skills-title {
-  font-size: 1.5rem;
-  font-weight: bold;
-  margin-bottom: 10px;
+.snapPhoneFrame__screenWrap {
+  width: 100%;
+  min-height: 0;
+  border-radius: 32px;
+  overflow: hidden;
+  aspect-ratio: 9 / 18.5;
+  background: #000;
 }
 
-.snapchat-projects-list,
-.snapchat-skills-description {
-  font-size: 1rem;
-  line-height: 1.6;
+.snapPhoneFrame__video {
+  display: block;
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  object-position: center;
 }
 
-.snapchat-projects-list {
-  list-style: disc;
-  margin-left: 20px;
+/* Bottom callout — Snap Academies */
+.caseStudy__snapAcademiesCallout {
+  margin: clamp(28px, 4vw, 40px) 0 0;
+  padding: 0;
+  text-align: center;
 }
 
-/* Responsive Layout Adjustments */
-@media (max-width: 768px) {
-  .snapchat-projects-skills-section {
-    flex-direction: column;
-    align-items: flex-start;
+.caseStudy__snapAcademiesLink {
+  font-family: var(--font-mono);
+  font-size: clamp(14px, 1.1vw, 17px);
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  text-transform: uppercase;
+  color: #0b0b0b;
+  text-decoration: underline;
+  text-underline-offset: 5px;
+}
+
+.caseStudy__snapAcademiesLink:hover {
+  opacity: 0.72;
+}
+
+.caseStudy--snapchat .caseStudy__footer {
+  margin-top: clamp(64px, 10vw, 120px);
+  padding-top: clamp(44px, 6vw, 64px);
+  gap: clamp(20px, 3vw, 24px);
+}
+
+@media (max-width: 900px) {
+  .caseStudy--snapchat .caseStudy__gallery--snapPhone {
+    grid-template-columns: 1fr;
+    align-items: start;
   }
 
-  .snapchat-projects-section,
-  .snapchat-skills-section {
-    width: 100%;
-    margin-bottom: 20px;
+  .caseStudy--snapchat .caseStudy__gallery--snapPhone .caseStudy__galleryItem--snapPoster img {
+    min-height: clamp(260px, 55vw, 400px);
+  }
+}
+
+@media (max-width: 600px) {
+  .caseStudy--snapchat .caseStudy__gallery--snapPhone .caseStudy__galleryItem--snapPoster img {
+    min-height: 240px;
   }
 }
