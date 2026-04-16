@@ -6,7 +6,7 @@ Personal portfolio site: work, skills, and case-study project pages. **Live:** [
 
 - **Stack:** React (Create React App), **HashRouter** (GitHub Pages–friendly URLs with `/#/…`), GSAP + Framer Motion, **Vanta** globe + **Three.js** for full-viewport backgrounds on Work and About.
 - **UI:** Responsive layout with glass-style navigation, home, and portfolio surfaces; case-study tiles and detail pages tuned for mobile and desktop.
-- **Hosting:** Static build on **GitHub Pages** (`gh-pages` branch). Asset base URL and custom domain come from `package.json` → `"homepage"` and `public/CNAME`.
+- **Hosting:** Production is deployed on **Vercel** (push to `main` triggers a build). `vercel.json` adds SPA-friendly rewrites. **`public/CNAME`** is only relevant if you still publish to **GitHub Pages**; it does not configure Vercel.
 
 ## Features
 
@@ -28,7 +28,7 @@ Personal portfolio site: work, skills, and case-study project pages. **Live:** [
 - `src/components/` — pages (`Home`, `About`, `Portfolio`, `Navbar`) and shared UI.
 - `src/components/work/` — case study pages and widgets.
 - `src/components/backgrounds/` — Vanta globe backdrop component (+ related CSS).
-- `public/CNAME` — custom domain for GitHub Pages (`fernandorojas.xyz`).
+- `public/CNAME` — used by GitHub Pages if you deploy there; optional for Vercel-only hosting.
 - `docs/` — internal design references (see below).
 
 ## Documentation
@@ -62,14 +62,25 @@ A portfolio assistant (OpenAI) was removed from the **public** build; related fi
 |---------|---------|
 | `npm start` | Dev server |
 | `npm run build` | Production build → `build/` |
-| `npm run deploy` | `predeploy` (build) + publish `build/` to **`gh-pages`** via `gh-pages` |
 
-## Deployment
+## Deployment (Vercel)
 
-1. Push source to **`main`** as usual.
-2. Run **`npm run deploy`** when you want the live site updated (updates the `gh-pages` branch).
-3. In the repo: **Settings → Pages** — source should serve from **`gh-pages`** (typically `/ (root)`).
-4. DNS at your registrar must point to GitHub Pages; **`public/CNAME`** must match the hostname you configure in Pages settings.
+1. Connect the GitHub repo to Vercel and deploy from **`main`** (default **Build Command:** `npm run build`, **Output Directory:** `build`).
+2. In Vercel: **Project → Settings → Domains** — add `fernandorojas.xyz` and `www.fernandorojas.xyz` if needed. Use the **DNS records Vercel shows** for your registrar (do not reuse GitHub Pages records).
+
+### If the custom domain does not load but the `.vercel.app` URL works
+
+Your registrar DNS is still sending traffic **elsewhere** (often **GitHub Pages**). For **Namecheap → Advanced DNS**:
+
+- Remove **A** records for `@` that point to `185.199.108.153`, `185.199.109.153`, `185.199.110.153`, `185.199.111.153` (those are GitHub Pages).
+- Remove **`www`** **CNAME** pointing to `fernando0422.github.io` (also GitHub Pages).
+- Add the records **Vercel lists** for your domain. Commonly the apex uses an **A** record for `@` (for example Vercel’s current value from their UI — often **`76.76.21.21`**) and **`www`** is a **CNAME** to **`cname.vercel-dns.com`** (confirm in **Vercel → Domains → your domain → DNS**; values can change).
+
+Wait for DNS propagation (minutes to a few hours). In GitHub: **Repo → Settings → Pages** — remove the custom domain from Pages if it is still set there so only **one** host serves `fernandorojas.xyz`.
+
+### Optional: GitHub Pages
+
+You can still publish to **`gh-pages`** with `npx gh-pages -d build` if you add a **`homepage`** in `package.json` again for that workflow only.
 
 Live site: **https://fernandorojas.xyz**
 
