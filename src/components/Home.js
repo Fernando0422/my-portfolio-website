@@ -16,19 +16,19 @@ export default function Home() {
       <main className="home">
         <section className="olhaHero" aria-label="Hero">
           <div className="olhaHero__titleBlock">
-            <h1 className="olhaHero__title">VENTURE OPERATOR</h1>
+            <h1 className="olhaHero__title">FERNANDO ROJAS</h1>
             <div className="olhaHero__location">
               <span>BASED</span>
               <span className="olhaHero__locationMiddle">IN</span>
-              <span>LOS ANGELES</span>
+              <span>SANTA CLARITA, CA</span>
             </div>
           </div>
 
           <div className="olhaHero__workRow">
             <div className="olhaHero__list">
-              <span>REAL ESTATE TECH</span>
-              <span>PRODUCT SYSTEMS</span>
-              <span>GLOBAL MARKETS</span>
+              <span>DISNEY — TALENT CONNECTIONS</span>
+              <span>PRIME AI CONSULTANTS — CO-FOUNDER</span>
+              <span>WEB DESIGN — AI SYSTEMS</span>
             </div>
 
             <div className="olhaHero__photo" aria-hidden="true">
@@ -42,10 +42,10 @@ export default function Home() {
 
           <div className="olhaHero__copy">
             <div>
-              I BUILD VENTURES AT THE INTERSECTION OF TECHNOLOGY AND REAL ESTATE.
+              I DESIGN AND BUILD FOR THE WEB.
             </div>
             <div>
-              DESIGN, ENGINEERING, AND BUSINESS STRATEGY IN ONE PERSON.
+              MARKETING SPECIALIST AT DISNEY BY DAY, CO-FOUNDER OF PRIME AI CONSULTANTS BY NIGHT.
             </div>
           </div>
 

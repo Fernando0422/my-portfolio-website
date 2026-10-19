@@ -7,9 +7,9 @@ import "./About.css";
 
 const education = [
   {
-    dates: "September 2025 – Present",
+    dates: "2025 – 2026",
     degree:
-      "Master of Liberal Arts, Computer Science (In Progress)",
+      "Master of Liberal Arts, Computer Science (Paused)",
     school: "Harvard University, Extension School",
     location: "Boston, MA",
   },
@@ -58,11 +58,25 @@ const skillGroups = [
 
 const experiences = [
   {
-    year: "April 2026 – Present",
-    role: "Digital Marketing Coordinator, Talent Acquisition Marketing",
+    year: "2026 \u2013 Present",
+    role: "Co-Founder",
+    org: "Prime AI Consultants",
+    blurb:
+      "AI consultancy I run with my father. We find where local service businesses lose money and fix it, with AI where it fits: website rebuilds, AI search visibility audits, and front-office automation.",
+    tags: [
+      "AI Consulting",
+      "Web Development",
+      "Local SEO",
+      "AI Search",
+      "Automation",
+    ],
+  },
+  {
+    year: "October 2026 – Present",
+    role: "Marketing Specialist, Talent Connections",
     org: "The Walt Disney Company",
     blurb:
-      "Previously Marketing and Digital Media Intern (June 2025–April 2026). Now running enterprise-scale career site platforms across Radancy and Phenom—platform sustainment, UX improvements, content systems, and AI-enabled candidate experience work across global business units.",
+      "Marketing and Digital Media Intern (June 2025–April 2026), then Digital Marketing Coordinator. Now running enterprise-scale career site platforms across Radancy and Phenom: platform sustainment, UX improvements, content systems, and AI-enabled candidate experience work across global business units.",
     tags: [
       "Digital Marketing",
       "Employer Brand",
@@ -320,9 +334,8 @@ function About() {
             <h2 className="about__footerContactTitle">GET IN TOUCH</h2>
             <p className="about__footerContactBody">
               If you&apos;re building something real and want to talk, I&apos;m here.
-              I&apos;m particularly interested in conversations about real estate
-              technology, product systems, and anything that reaches communities tech
-              usually ignores. The best way to reach me is email.
+              I&apos;m particularly interested in conversations about AI for local
+              businesses, web platforms, and design engineering. The best way to reach me is email.
             </p>
           </div>
           <div className="about__footerActions">

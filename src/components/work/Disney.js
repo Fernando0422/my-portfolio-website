@@ -17,10 +17,10 @@ const Disney = () => {
           <p className="caseStudy__eyebrow">
             THE WALT DISNEY COMPANY · BURBANK, CA (REMOTE)
           </p>
-          <h1 className="caseStudy__title">DIGITAL MARKETING COORDINATOR</h1>
+          <h1 className="caseStudy__title">MARKETING SPECIALIST</h1>
           <p className="caseStudy__subhead caseStudy__subhead--disneyIntro">
             <span className="caseStudy__subheadBody">
-              Talent Acquisition Marketing focused on Heroes Work Here, global careers
+              Talent Connections focused on Heroes Work Here, global careers
               experiences in Phenom and Radancy, and performance insights with Adobe
               Analytics.
             </span>
@@ -49,13 +49,13 @@ const Disney = () => {
             <span className="caseStudy__metaLabel">INDUSTRY ↘</span>
             <ul className="caseStudy__metaValue caseStudy__metaStack">
               <li>MEDIA, ENTERTAINMENT &amp; EXPERIENCES</li>
-              <li>TALENT ACQUISITION</li>
+              <li>TALENT CONNECTIONS</li>
             </ul>
           </div>
           <div className="caseStudy__metaCol" role="listitem">
             <span className="caseStudy__metaLabel">TIMELINE ↘</span>
             <ul className="caseStudy__metaValue caseStudy__metaStack">
-              <li>APRIL 2026 – PRESENT · DIGITAL MARKETING COORDINATOR</li>
+              <li>OCTOBER 2026 – PRESENT · MARKETING SPECIALIST</li>
               <li>JUNE 2025 – APRIL 2026 · MARKETING &amp; DIGITAL MEDIA INTERN</li>
             </ul>
           </div>
@@ -77,7 +77,7 @@ const Disney = () => {
             <p>
               I started as a Marketing and Digital Media Intern (June 2025–April
               2026), then stepped into the Digital Marketing Coordinator role. I sit
-              in Talent Acquisition Marketing: the work candidates actually see
+              in Talent Connections: the work candidates actually see
               before they ever talk to a recruiter. Heroes Work Here was my lane in
               WordPress and Beaver Builder—shipping the site while creative, comms,
               marketing, and account teams all had a stake in how it looked and read.
