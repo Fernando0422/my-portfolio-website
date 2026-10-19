@@ -55,9 +55,16 @@ export default function Navbar() {
       { key: "work", label: "Work", to: "/portfolio", end: true },
       { key: "about", label: "About", to: "/about" },
       {
+        key: "linkedin",
+        label: "LinkedIn",
+        to: "https://www.linkedin.com/in/fernando-rojas0422/",
+        external: true,
+      },
+      {
         key: "contact",
         label: "Contact",
         to: "mailto:Fernando.rojas0422@gmail.com",
+        external: true,
       },
     ],
     []
@@ -97,11 +104,12 @@ export default function Navbar() {
                 >
                   <ul className="topbar__mobileList">
                     {items.map((item) => {
-                      if (item.key === "contact") {
+                      if (item.external) {
                         return (
                           <li key={item.key} className="topbar__mobileItem">
                             <a
                               href={item.to}
+                              {...(item.to.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                               className={`topbar__mobileLink${
                                 activeKey === item.key ? " is-active" : ""
                               }`}
@@ -143,11 +151,12 @@ export default function Navbar() {
             {items.map((item) => {
               const isActive = activeKey === item.key;
 
-              if (item.key === "contact") {
+              if (item.external) {
                 return (
                   <li key={item.key} className="pillnav__item">
                     <a
                       href={item.to}
+                      {...(item.to.startsWith("http") ? { target: "_blank", rel: "noopener noreferrer" } : {})}
                       className={`pillnav__link ${isActive ? "is-active" : ""}`}
                     >
                       <AnimatePresence initial={false}>
