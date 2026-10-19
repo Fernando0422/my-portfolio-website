@@ -978,3 +978,71 @@
     letter-spacing: 0.11em;
   }
 }
+
+/* PRIME AI CONSULTANTS SECTION */
+.primeSection {
+  position: relative;
+  z-index: 2;
+  padding: 72px 24px 96px;
+  display: flex;
+  justify-content: center;
+}
+.primeSection__inner {
+  width: min(680px, 92vw);
+  text-align: left;
+  border-top: 1px solid rgba(11, 11, 11, 0.16);
+  padding-top: 36px;
+}
+.primeSection__eyebrow {
+  display: inline-block;
+  font-family: var(--font-mono);
+  font-size: 11px;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  text-transform: uppercase;
+  color: rgba(11, 11, 11, 0.55);
+  margin-bottom: 14px;
+}
+.primeSection__title {
+  font-family: var(--font-main);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  text-transform: uppercase;
+  font-size: clamp(30px, 4.5vw, 52px);
+  line-height: 1.02;
+  margin: 0 0 18px;
+  color: rgba(11, 11, 11, 0.94);
+}
+.primeSection__body {
+  font-family: var(--font-main);
+  font-size: clamp(15px, 1.8vw, 18px);
+  line-height: 1.65;
+  color: rgba(11, 11, 11, 0.78);
+  margin: 0 0 26px;
+  max-width: 60ch;
+}
+.primeSection__link {
+  display: inline-flex;
+  align-items: center;
+  padding: 13px 24px;
+  font-family: var(--font-mono);
+  font-size: 12px;
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  text-transform: uppercase;
+  text-decoration: none;
+  color: #fcfff6;
+  background: rgba(11, 11, 11, 0.92);
+  border: 1px solid rgba(11, 11, 11, 0.92);
+  border-radius: 999px;
+  transition: background 0.2s ease, color 0.2s ease;
+}
+.primeSection__link:hover {
+  background: transparent;
+  color: rgba(11, 11, 11, 0.92);
+}
+@media (max-width: 640px) {
+  .primeSection {
+    padding: 56px 20px 72px;
+  }
+}

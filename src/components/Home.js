@@ -53,6 +53,27 @@ export default function Home() {
             VIEW WORK
           </Link>
         </section>
+
+        <section className="primeSection" aria-label="Prime AI Consultants">
+          <div className="primeSection__inner">
+            <span className="primeSection__eyebrow">Currently building</span>
+            <h2 className="primeSection__title">PRIME AI CONSULTANTS</h2>
+            <p className="primeSection__body">
+              An AI consultancy I co-founded with my father. We find where
+              local service businesses lose money and fix it, with AI where it
+              fits. Our AI Search Visibility Audit scores what ChatGPT,
+              Perplexity, and Google say about your business, out of 100.
+            </p>
+            <a
+              className="primeSection__link"
+              href="https://www.primeaiconsultants.com/audit"
+              target="_blank"
+              rel="noopener noreferrer"
+            >
+              Get your audit &#8599;
+            </a>
+          </div>
+        </section>
       </main>
     </>
   );
