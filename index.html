@@ -183,6 +183,10 @@
     padding:12px 4px 0; font-size:13px; color:var(--muted); text-align:left;
   }
   .portrait figcaption b{color:var(--ink); font-weight:600}
+  /* Home portrait: hidden on desktop, visible on mobile only */
+  @media (min-width: 861px){
+    .portrait-wrap{display:none}
+  }
 
   /* Three steps under the hero */
   .steps{margin:36px 0 0}
@@ -237,10 +241,16 @@
   .exhibit{padding:56px 0 64px; border-bottom:1px solid var(--line)}
   .exhibit:first-of-type{padding-top:28px}
   .exhibit figure{margin:0}
-  .exhibit .frame{overflow:hidden; border-radius:24px; background:var(--taupe)}
-  .exhibit img{width:100%; height:auto; aspect-ratio:3/2; object-fit:cover; display:block}
-  /* Disney Careers screenshot in full at its natural ratio so nothing is cropped from the sides */
-  .exhibit img[src="assets/disney-careers-homepage.png"],
+  .exhibit .frame{overflow:hidden; border-radius:24px; background:var(--taupe); aspect-ratio:3/2; width:100%}
+  .exhibit img{width:100%; height:100%; aspect-ratio:3/2; object-fit:cover; display:block}
+  /* Disney exhibit: same 3/2 frame as every other exhibit, image contained inside
+     so the full hero stays visible with nothing cropped from the sides.
+     White frame background so the letterbox blends with the image's white. */
+  .exhibit .frame:has(img[src="assets/disney-careers-homepage.png"]){background:#fff}
+  .exhibit img[src="assets/disney-careers-homepage.png"]{
+    aspect-ratio:3/2; object-fit:contain; background:#fff;
+  }
+  /* Case-study detail Disney image keeps its natural ratio (not an exhibit) */
   .case-figure img[src="assets/disney-careers-homepage.png"]{
     aspect-ratio:1920 / 900; object-fit:contain;
   }
@@ -481,11 +491,11 @@
   .more-card img.contain{background:#fff; object-fit:contain; aspect-ratio:4/3; padding:14px}
 
   /* Bottega style navigation panel: opens from the left on MENU click,
-     full height, about 80% of the viewport, page strip visible on the right */
+     full height, links only, page strip visible on the right */
   .scrim{position:fixed; inset:0; background:rgba(10,9,8,.52); z-index:80; opacity:0; transition:opacity .32s ease}
   .scrim[hidden]{display:none}
   .nav-panel{
-    position:fixed; top:0; left:0; width:min(80vw, 1120px); height:100dvh; z-index:90;
+    position:fixed; top:0; left:0; width:min(80vw, 560px); height:100dvh; z-index:90;
     background:var(--surface); color:var(--ink); padding:18px 0 32px;
     transform:translateX(-102%); visibility:hidden; transition:transform .38s ease, visibility 0s linear .38s;
     display:flex; flex-direction:column; box-shadow:0 0 0 1px var(--line);
@@ -500,10 +510,10 @@
   }
   .panel-close:hover{text-decoration:underline; text-underline-offset:5px; text-decoration-thickness:1px}
   .nav-panel-body{
-    flex:1; display:grid; grid-template-columns:minmax(230px, 320px) 1fr; gap:56px;
-    padding:30px 48px 8px 40px; align-items:stretch;
+    flex:1; display:flex; flex-direction:column;
+    padding:30px 48px 8px 40px;
   }
-  .nav-panel-left{display:flex; flex-direction:column; min-height:100%}
+  .nav-panel-left{display:flex; flex-direction:column; flex:1}
   .nav-panel-links{display:flex; flex-direction:column}
   .nav-panel-links a{
     display:inline-flex; align-items:center; min-height:48px; padding:9px 2px; text-decoration:none;
@@ -521,14 +531,6 @@
     font-size:13px; font-weight:600; letter-spacing:.14em; text-transform:uppercase; color:var(--muted);
   }
   .nav-panel-utility a:hover{color:var(--ink); text-decoration:underline; text-underline-offset:4px}
-  .nav-tiles{display:grid; grid-template-columns:repeat(3, 1fr); gap:22px; align-content:start}
-  .tile{display:block; text-decoration:none; color:var(--ink); min-width:0}
-  .tile-frame{display:block; overflow:hidden; aspect-ratio:3/4; background:var(--taupe)}
-  .tile-frame img{width:100%; height:100%; object-fit:cover; display:block}
-  .tile-frame.prime{background:#101418; display:flex; align-items:center; justify-content:center; padding:22px}
-  .tile-frame.prime img{width:100%; height:auto; max-height:100%; object-fit:contain}
-  .tile-label{display:block; margin-top:10px; font-size:13.5px; font-weight:500; line-height:1.4; color:var(--ink)}
-  .tile:hover .tile-label{text-decoration:underline; text-underline-offset:4px}
   body.menu-open{overflow:hidden}
   /* Work view toggle */
   .view-toggle{display:inline-flex; gap:2px; background:var(--surface); border:1px solid var(--line); border-radius:999px; padding:4px; margin:18px 0 6px}
@@ -585,9 +587,6 @@
     .nav-panel-top{padding:0 16px 4px}
     .nav-panel-body{grid-template-columns:1fr; gap:36px; padding:22px 22px 4px}
     .nav-panel-links a{font-size:20px}
-    .nav-tiles{gap:12px}
-    .tile-frame.prime{padding:12px}
-    .tile-label{font-size:12px; margin-top:7px}
     .woven-hero{padding:44px 22px 40px; border-radius:22px}
     .work-index .idx-row{grid-template-columns:1fr; gap:6px}
     .work-index .idx-note{margin-top:2px}
@@ -647,20 +646,6 @@
         <a href="tel:+16617795568">661-779-5568</a>
         <a href="#/contact">Get your free audit</a>
       </div>
-    </div>
-    <div class="nav-tiles">
-      <a class="tile" href="#/work/prime-ai-consultants">
-        <span class="tile-frame prime"><img src="assets/prime-ai-logo-nav.svg" alt="Prime AI Consultants logo" width="500" height="118" /></span>
-        <span class="tile-label">Prime AI Consultants</span>
-      </a>
-      <a class="tile" href="#/work/disney-talent-connections">
-        <span class="tile-frame"><img src="assets/disney-careers-homepage.png" alt="Disney Careers homepage hero with Woody, Jessie, and Buzz Lightyear" width="1920" height="900" /></span>
-        <span class="tile-label">Disney</span>
-      </a>
-      <a class="tile" href="#/work/mayan-roots">
-        <span class="tile-frame"><img src="assets/mayanroots-milpa-fieldwork.png" alt="Two people in a tall green milpa cornfield in Yucatan reviewing the Mayan Roots app on a smartphone" width="1024" height="671" /></span>
-        <span class="tile-label">Mayan Roots</span>
-      </a>
     </div>
   </div>
 </aside>
@@ -1141,10 +1126,6 @@
         <p class="page-lede"><strong>Marketing Associate, Talent Connections, The Walt Disney Company.</strong> 2025 to Present, remote, Burbank.</p>
       </div>
     </section>
-    <figure class="case-figure">
-      <div class="frame"><img src="assets/disney-careers-homepage.png" alt="Current Disney Careers homepage hero with BE YOU. BE HERE. BE PART OF THE STORY. headline and Woody, Jessie, and Buzz Lightyear" width="1920" height="900" /></div>
-    </figure>
-
     <section class="content-section" aria-labelledby="disney-problem-title">
       <div class="twocol">
         <div><p class="kicker">Problem</p><h2 id="disney-problem-title">The page a candidate sees first.</h2></div>
@@ -1154,6 +1135,10 @@
         </div>
       </div>
     </section>
+
+    <figure class="case-figure">
+      <div class="frame"><img src="assets/disney-careers-homepage.png" alt="Current Disney Careers homepage hero with BE YOU. BE HERE. BE PART OF THE STORY. headline and Woody, Jessie, and Buzz Lightyear" width="1920" height="900" /></div>
+    </figure>
 
     <section class="content-section" aria-labelledby="disney-built-title">
       <div class="twocol">
@@ -1190,10 +1175,6 @@
         <p class="page-lede mayan-lede"><strong class="mayan-line mayan-line--first">Senior thesis project, Santa Clara University.</strong><span class="mayan-line">Completed in June 2025.</span></p>
       </div>
     </section>
-    <figure class="case-figure">
-      <div class="frame"><img src="assets/mayanroots-milpa-fieldwork.png" alt="Two people in a tall green milpa cornfield in Yucatan reviewing the Mayan Roots app on a smartphone" width="1024" height="671" /></div>
-    </figure>
-
     <section class="content-section" aria-labelledby="mayan-sections-title">
       <div class="twocol">
         <div><p class="kicker">Exhibit</p><h2 id="mayan-sections-title">What the thesis covers.</h2></div>
@@ -1205,6 +1186,10 @@
         </div>
       </div>
     </section>
+
+    <figure class="case-figure">
+      <div class="frame"><img src="assets/mayanroots-milpa-fieldwork.png" alt="Two people in a tall green milpa cornfield in Yucatan reviewing the Mayan Roots app on a smartphone" width="1024" height="671" /></div>
+    </figure>
 
     <section class="content-section" aria-labelledby="mayan-built-title">
       <div class="twocol">
@@ -1248,10 +1233,6 @@
       </div>
     </section>
 
-    <figure class="case-figure prime-mark">
-      <div class="frame prime-mark-frame"><img src="assets/prime-ai-logo-nav.svg" alt="Prime AI Consultants logo" width="500" height="118" /></div>
-    </figure>
-
     <section class="content-section" aria-labelledby="prime-approach-title">
       <div class="twocol">
         <div><p class="kicker">Approach</p><h2 id="prime-approach-title">What Prime does.</h2></div>
@@ -1264,6 +1245,10 @@
         </div>
       </div>
     </section>
+
+    <figure class="case-figure prime-mark">
+      <div class="frame prime-mark-frame"><img src="assets/prime-ai-logo-nav.svg" alt="Prime AI Consultants logo" width="500" height="118" /></div>
+    </figure>
 
     <section class="content-section" aria-labelledby="prime-principles-title">
       <div class="twocol">
@@ -1302,14 +1287,6 @@
         <p class="page-lede"><strong>Online and Ecommerce Intern.</strong> Summer 2024.</p>
       </div>
     </section>
-    <figure class="case-figure">
-      <div class="frame"><img src="assets/lamerlandingpage.png" alt="La Mer ecommerce landing page with a large product photo" width="2336" height="1116" /></div>
-      <div class="real-stack" style="max-width:980px;margin-left:auto;margin-right:auto">
-        <div><div class="frame"><img class="crop-mid" src="assets/lamerimage1.png" alt="La Mer campaign and product image" width="2996" height="1860" /></div></div>
-        <div><div class="frame"><img class="crop-mid" src="assets/lamerimage2.png" alt="La Mer night cream advertisement and product image" width="2880" height="1446" /></div></div>
-        <div><div class="frame"><img class="contain" src="assets/La-Mer-logo.jpg" alt="La Mer logo on a green panel" width="960" height="960" /></div></div>
-      </div>
-    </figure>
     <section class="content-section" aria-labelledby="lamer-role-title">
       <div class="twocol">
         <div><p class="kicker">Role</p><h2 id="lamer-role-title">My summer at La Mer.</h2></div>
@@ -1321,6 +1298,14 @@
         </div>
       </div>
     </section>
+    <figure class="case-figure">
+      <div class="frame"><img src="assets/lamerlandingpage.png" alt="La Mer ecommerce landing page with a large product photo" width="2336" height="1116" /></div>
+      <div class="real-stack" style="max-width:980px;margin-left:auto;margin-right:auto">
+        <div><div class="frame"><img class="crop-mid" src="assets/lamerimage1.png" alt="La Mer campaign and product image" width="2996" height="1860" /></div></div>
+        <div><div class="frame"><img class="crop-mid" src="assets/lamerimage2.png" alt="La Mer night cream advertisement and product image" width="2880" height="1446" /></div></div>
+        <div><div class="frame"><img class="contain" src="assets/La-Mer-logo.jpg" alt="La Mer logo on a green panel" width="960" height="960" /></div></div>
+      </div>
+    </figure>
     <p class="back-row"><a class="arrow-link" href="#/work">Back to all work</a></p>
   </div><!-- /page-lamer -->
 
@@ -1333,13 +1318,6 @@
         <p class="page-lede"><strong>Web Developer, Santa Clara University.</strong> 2023 to 2025.</p>
       </div>
     </section>
-    <figure class="case-figure">
-      <div class="frame"><img src="assets/CAHimg2.png" alt="Center for Arts and Humanities website interface with navigation" width="2724" height="1774" /></div>
-      <div class="real-stack" style="max-width:980px;margin-left:auto;margin-right:auto">
-        <div><div class="frame"><img class="contain" src="assets/CAHimg1.png" alt="Center for Arts and Humanities Belonging, Community and Home emblem" width="500" height="500" /></div></div>
-        <div><div class="frame"><img class="contain" src="assets/cah.png" alt="Center for Arts and Humanities red circular CAH mark" width="355" height="142" /></div></div>
-      </div>
-    </figure>
     <section class="content-section" aria-labelledby="cah-role-title">
       <div class="twocol">
         <div><p class="kicker">Role</p><h2 id="cah-role-title">A site students and faculty use.</h2></div>
@@ -1350,6 +1328,13 @@
         </div>
       </div>
     </section>
+    <figure class="case-figure">
+      <div class="frame"><img src="assets/CAHimg2.png" alt="Center for Arts and Humanities website interface with navigation" width="2724" height="1774" /></div>
+      <div class="real-stack" style="max-width:980px;margin-left:auto;margin-right:auto">
+        <div><div class="frame"><img class="contain" src="assets/CAHimg1.png" alt="Center for Arts and Humanities Belonging, Community and Home emblem" width="500" height="500" /></div></div>
+        <div><div class="frame"><img class="contain" src="assets/cah.png" alt="Center for Arts and Humanities red circular CAH mark" width="355" height="142" /></div></div>
+      </div>
+    </figure>
     <p class="back-row"><a class="arrow-link" href="#/work">Back to all work</a></p>
   </div><!-- /page-cah -->
 
@@ -1362,12 +1347,6 @@
         <p class="page-lede"><strong>Scholar, Snap Lens Academy.</strong> Summer 2022.</p>
       </div>
     </section>
-    <figure class="case-figure">
-      <div class="frame"><img src="assets/snapchathero.jpg" alt="Snap Lens Academy hero graphic with yellow Snapchat ghost on a black background" width="1200" height="627" /></div>
-      <div class="real-stack" style="max-width:980px;margin-left:auto;margin-right:auto">
-        <div><div class="frame"><img class="crop-mid" src="assets/snap-lens-academy-2022-sla.png" alt="Snap Lens Academy 2022 cohort collage on a yellow grid" width="995" height="1024" /></div></div>
-      </div>
-    </figure>
     <section class="content-section" aria-labelledby="snapchat-role-title">
       <div class="twocol">
         <div><p class="kicker">What I Built</p><h2 id="snapchat-role-title">AR lenses built in five weeks.</h2></div>
@@ -1380,6 +1359,12 @@
         </div>
       </div>
     </section>
+    <figure class="case-figure">
+      <div class="frame"><img src="assets/snapchathero.jpg" alt="Snap Lens Academy hero graphic with yellow Snapchat ghost on a black background" width="1200" height="627" /></div>
+      <div class="real-stack" style="max-width:980px;margin-left:auto;margin-right:auto">
+        <div><div class="frame"><img class="crop-mid" src="assets/snap-lens-academy-2022-sla.png" alt="Snap Lens Academy 2022 cohort collage on a yellow grid" width="995" height="1024" /></div></div>
+      </div>
+    </figure>
     <p class="back-row"><a class="arrow-link" href="#/work">Back to all work</a></p>
   </div><!-- /page-snapchat -->
 
