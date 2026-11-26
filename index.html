@@ -281,16 +281,20 @@
   /* About / path */
   .about{padding:84px 0 0; display:grid; grid-template-columns:1fr 1fr; gap:48px}
   .timeline{margin:18px 0 0; padding:0; list-style:none}
-  .timeline li{display:grid; grid-template-columns:110px 1fr; gap:14px; padding:14px 0; border-bottom:1px solid var(--line)}
+  .timeline li{display:grid; grid-template-columns:176px 1fr; gap:14px; padding:14px 0; border-bottom:1px solid var(--line)}
   .timeline li:last-child{border-bottom:none}
-  .timeline .when{font-size:13px; color:var(--muted); font-weight:600; padding-top:2px}
+  .timeline .when{font-size:13px; color:var(--muted); font-weight:600; padding-top:2px; white-space:nowrap}
   .timeline .what b{display:block; font-size:15.5px}
   .timeline .what span{color:var(--muted); font-size:14.5px; line-height:1.55; display:block}
   .edu{margin:18px 0 0; padding:0; list-style:none}
   .edu li{padding:14px 0; border-bottom:1px solid var(--line)}
   .edu li:last-child{border-bottom:none}
   .edu b{display:block; font-size:15.5px}
-  .edu span{color:var(--muted); font-size:14.5px; display:block}
+  .edu span{color:var(--muted); font-size:14.5px; display:block; text-wrap:pretty}
+  @media (max-width:860px){
+    .timeline li{grid-template-columns:1fr; gap:4px}
+    .timeline .when{padding-top:0}
+  }
 
   /* Footer: luxury minimal, flat, hairline top rule, no pattern, no boxes */
   footer{margin-top:96px; border-top:1px solid var(--line); background:var(--bg)}
@@ -847,11 +851,7 @@
               <div class="what"><b>Marketing and Digital Media Intern</b><span>Talent Connections, The Walt Disney Company.</span></div>
             </li>
             <li>
-              <span class="when">2026</span>
-              <div class="what"><b>Digital Marketing Coordinator</b><span>Talent Connections, The Walt Disney Company.</span></div>
-            </li>
-            <li>
-              <span class="when">2026 to Present</span>
+              <span class="when">April 2026 to Present</span>
               <div class="what"><b>Marketing Associate</b><span>Talent Connections, The Walt Disney Company.</span></div>
             </li>
           </ul>
@@ -869,7 +869,7 @@
           <ul class="edu">
             <li><b>BS, Web Design and Engineering</b><span>Santa Clara University · Graduated June 2025</span></li>
             <li><b>Master of Liberal Arts in Computer Science</b><span>Harvard Extension School · On a gap semester</span></li>
-            <li><b>Stanford Summer Session</b><span>CS 106B · 2023</span></li>
+            <li><b>Stanford Summer Session</b><span>CS 106B, Programming Abstractions · ORALCOMM 118, Public Speaking: Romancing the Room · 2023</span></li>
             <li><b>AA, Marketing</b><span>College of the Canyons</span></li>
           </ul>
         </div>
@@ -884,12 +884,12 @@
         </div>
         <div>
           <ul class="edu">
-            <li><b>Websites and rebuilds</b><span>A site that explains the business clearly and turns visits into calls and inquiries, built to be owned and updated by the business itself.</span></li>
-            <li><b>Search and Google presence</b><span>Your Google Business Profile and local search, set up so the right people find you, including how AI answers describe your business.</span></li>
-            <li><b>Systems behind the scenes</b><span>The tools you already use, connected so inquiries are answered and followed up instead of lost, with nothing that already works replaced.</span></li>
-            <li><b>AI help, where it fits</b><span>Help with missed calls and repeat questions, added as a later step once the basics are earning, never as the first thing sold.</span></li>
-            <li><b>Career sites at scale</b><span>Building and maintaining career sites in multiple languages as part of a global team, the work I do at Disney.</span></li>
-            <li><b>Mobile apps</b><span>Mayan Roots, my senior thesis at Santa Clara University: a trilingual app in Spanish, English, and Yucatec Maya, built to work without a signal for farmers in Yucatan.</span></li>
+            <li><b>Websites and rebuilds</b><span>A site that explains the business clearly and turns visits into calls and inquiries, yours to own and update.</span></li>
+            <li><b>Search and Google presence</b><span>Your Google Business Profile and local search, set up so the right people find you, including how AI answers describe you.</span></li>
+            <li><b>Systems behind the scenes</b><span>The tools you already use, connected so no inquiry goes unanswered or left unfollowed, and nothing that already works gets replaced.</span></li>
+            <li><b>AI help, where it fits</b><span>Help with missed calls and repeat questions, added once the basics are earning, never as the first thing sold.</span></li>
+            <li><b>Career sites at scale</b><span>Career sites in multiple languages, built and maintained as part of a global team at Disney.</span></li>
+            <li><b>Mobile development</b><span>Mayan Roots, my senior thesis at Santa Clara University: a trilingual app in Spanish, English, and Yucatec Maya, built to work without a signal for farmers in Yucatan.</span></li>
           </ul>
         </div>
       </div>
