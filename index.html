@@ -562,8 +562,13 @@
   .about-hero .page-lede{color:var(--muted)}
   .about-hero .page-lede strong{color:var(--ink)}
   .about-portrait{margin:44px auto 0; max-width:340px}
-  .about-portrait .frame{overflow:hidden; border-radius:20px; background:var(--taupe); border:1px solid var(--line); aspect-ratio:4/5}
-  .about-portrait img{width:100%; height:100%; object-fit:cover; object-position:center center; display:block}
+  /* Portrait framing: the source photo is square and Fernando's head starts
+     28% down it, so the old 4/5 card showed that whole empty band above him.
+     The shorter 13/10 frame, anchored to the bottom of the photo, crops that
+     band away: visible headroom drops to about 7% of the frame height, while
+     the full photo width stays in frame so face and shoulders are not cut. */
+  .about-portrait .frame{overflow:hidden; border-radius:20px; background:var(--taupe); border:1px solid var(--line); aspect-ratio:13/10}
+  .about-portrait img{width:100%; height:100%; object-fit:cover; object-position:center bottom; display:block}
   .about-portrait figcaption{display:flex; justify-content:space-between; gap:12px; flex-wrap:wrap; padding:12px 2px 0; font-size:13px; color:var(--muted); text-align:left}
   .about-portrait figcaption b{color:var(--ink); font-weight:600}
   @media (max-width: 860px){
