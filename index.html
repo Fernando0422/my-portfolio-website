@@ -561,6 +561,13 @@
   .about-hero .page-title{font-size:clamp(38px, 5.6vw, 64px); max-width:16ch}
   .about-hero .page-lede{color:var(--muted)}
   .about-hero .page-lede strong{color:var(--ink)}
+  /* About hero lede only: at the shared 58ch width its last word
+     "Consultants." stranded alone on a third line. Widened to 80ch with
+     balanced wrapping so it sits on two fuller lines on desktop, ending
+     "...through Prime AI Consultants." together, and wraps evenly with
+     no orphan word on mobile. Scoped to the About page so no other
+     page-lede paragraph changes. */
+  #page-about .about-hero .page-lede{max-width:80ch; text-wrap:balance}
   .about-portrait{margin:44px auto 0; max-width:340px}
   /* Portrait framing: the source photo is square and Fernando's head starts
      28% down it, so the old 4/5 card showed that whole empty band above him.
